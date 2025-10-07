@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anil Arote Associates - Structural Engineer | Architect | Contractor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Raleway:wght@400;600&family=Slabo+13px&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- =============================================== -->
+  <!-- 1. STYLE.CSS CONTENT (Internal CSS Block) -->
+  <!-- =============================================== -->
+  <style>
+    /* Global & Core Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Raleway', 'Inter', sans-serif;
+      background-color: #0d1b2a;
+      color: #f4f5f7;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1, h2, h3 {
+      font-family: 'Slabo 13px', serif;
+      color: #ffffff;
+    }
+    a { text-decoration: none; color: #ffffff; transition: all 0.3s ease; }
+    a:hover { color: #f0a500; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+    /* Header & Navbar */
+    header.navbar {
+      background: linear-gradient(90deg, #0a1a3c, #b31217);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 8px 6%; position: sticky; top: 0; z-index: 10;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    }
+    .logo { cursor: pointer; display: flex; align-items: center; gap: 12px; }
+    .logo img { height: 55px; width: auto; border-radius: 8px; }
+    .logo-text h1 { font-size: 1.3rem; line-height: 1.1; color: #ffffff; }
+    .logo-text p { font-size: 0.8rem; color: #dcdcdc; letter-spacing: 0.5px; }
+    nav a {
+      margin-left: 18px; font-weight: 600; font-size: 0.95rem; cursor: pointer;
+      position: relative; padding-bottom: 5px;
+    }
+    nav a.active::after {
+        content: ""; display: block; width: 100%; height: 2px;
+        background: #f0a500; position: absolute; bottom: 0; left: 0;
+    }
+
+    /* Dynamic Content Styles */
+    #app-content { flex-grow: 1; min-height: 65vh; transition: opacity 0.4s ease; }
+    
+    .hero-page {
+      position: relative; height: 70vh;
+      background: linear-gradient(135deg, rgba(10, 26, 60, 0.4), rgba(179, 18, 23, 0.4)),
+                  url("LogoAnil.png") center/cover no-repeat;
+      display: flex; justify-content: center; align-items: center;
+      text-align: center; color: #ffffff; padding: 0 20px;
+    }
+    
+    .content-page { padding: 80px 6%; animation: fadeIn 0.6s ease-out; }
+    .section-title { font-size: 2.2rem; margin-bottom: 40px; color: #f0a500; position: relative; display: inline-block; text-align: center; }
+    .section-title::after { content: ""; display: block; width: 60%; height: 3px; background: #b31217; margin: 8px auto 0; border-radius: 5px; }
+    
+    .info-card {
+        background: rgba(255, 255, 255, 0.06); border-radius: 12px; padding: 30px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease;
+    }
+    .info-card:hover { transform: translateY(-5px); border: 1px solid #f0a500; }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+        header.navbar { flex-direction: column; gap: 10px; }
+        header nav a { margin: 0 8px; font-size: 0.85rem; }
+        .hero-page { height: 60vh; }
+        .content-page { padding: 40px 4%; }
+    }
+  </style>
+</head>
+<body>
+<!-- Header (Always visible) -->
+<header class="navbar">
+  <div class="logo" onclick="renderPage('home')">
+    <img src="Logo.jpeg" alt="Anil Arote Associates Official Logo">
+    <div class="logo-text">
+      <h1>Anil Arote Associates</h1>
+      <p>Structural Engineer | Architect | Contractor</p>
+    </div>
+  </div>
+  <nav id="main-nav">
+    <a href="javascript:void(0)" data-page="home">Home</a>
+    <a href="javascript:void(0)" data-page="about">About Us</a>
+    <a href="javascript:void(0)" data-page="services">Services</a>
+    <a href="javascript:void(0)" data-page="expertise">Expertise</a>
+    <a href="javascript:void(0)" data-page="projects">Projects</a>
+    <a href="javascript:void(0)" data-page="contact">Contact</a>
+  </nav>
+</header>
+
+<!-- MAIN CONTENT AREA - Dynamic content is injected here -->
+<main id="app-content"></main>
+
+<!-- Footer (Always visible) -->
+<footer class="text-center py-4 bg-[#0a1a3c] border-t border-[#b31217] mt-auto">
+  <p class="text-sm text-gray-400">© 2025 Anil Arote Associates | All Rights Reserved.</p>
+</footer>
+
+<!-- ========================================================= -->
+<!-- 2. HTML CONTENT TEMPLATES (EASIEST TO EDIT) -->
+<!-- These blocks contain the pure HTML structure for each "page." -->
+<!-- To edit the content, modify the text within these templates. -->
+<!-- ========================================================= -->
+
+<!-- HOME PAGE TEMPLATE (Now includes summaries) -->
+<script type="text/template" id="home-template">
+    <section class="hero-page" id="hero">
+        <div class="hero-content" style="animation: fadeInUp 1.3s ease;">
+            <img src="Logo.jpeg" alt="Anil Arote Associates Logo" class="hero-logo w-24 h-auto mx-auto rounded-lg shadow-2xl mb-4">
+            <h1 style="font-size: 2.5rem;" class="mb-3">Building Trust, Engineering Futures.</h1>
+            <p style="font-size: 1.1rem; color: #e0e0e0; margin-bottom: 25px;">Structural Engineer | Architecture | Contractor</p>
+            <a href="javascript:void(0)" onclick="renderPage('contact')" class="btn py-3 px-8 rounded-full font-semibold" style="background: linear-gradient(90deg, #b31217, #f0a500); color: #fff;">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- Short Info Sections -->
+    <section class="content-page text-center" style="padding-top: 40px; padding-bottom: 40px; background: #1c2c54;">
+        <div class="container grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- About Summary -->
+            <div class="info-card">
+                <i class="fas fa-building text-4xl text-[#f0a500] mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Unified Approach</h3>
+                <p class="text-sm text-gray-300">
+                    We offer a single-point solution for **Structural Engineering, Architecture, and Contracting**. This unified team ensures seamless execution, precision, and efficiency from concept to completion.
+                </p>
+                <a href="javascript:void(0)" onclick="renderPage('about')" class="text-[#b31217] hover:text-[#f0a500] mt-3 inline-block font-semibold text-sm">Our Full Story <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            
+            <!-- Services Summary -->
+            <div class="info-card">
+                <i class="fas fa-drafting-compass text-4xl text-[#f0a500] mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Core Services</h3>
+                <p class="text-sm text-gray-300">
+                    Our capabilities include detailed **Architectural Designs**, robust **RCC Structural Planning** (IS Code compliant), Turnkey Construction, and managing all required **Government Approvals**.
+                </p>
+                <a href="javascript:void(0)" onclick="renderPage('services')" class="text-[#b31217] hover:text-[#f0a500] mt-3 inline-block font-semibold text-sm">View All Services <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+            
+            <!-- Expertise Summary -->
+            <div class="info-card">
+                <i class="fas fa-hard-hat text-4xl text-[#f0a500] mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Diverse Portfolio</h3>
+                <p class="text-sm text-gray-300">
+                    We have successfully delivered projects ranging from **Luxury Residential Bungalows** and **Commercial Complexes** to essential **Government and Industrial Infrastructure**.
+                </p>
+                <a href="javascript:void(0)" onclick="renderPage('expertise')" class="text-[#b31217] hover:text-[#f0a500] mt-3 inline-block font-semibold text-sm">Explore Our Expertise <i class="fas fa-arrow-right ml-1"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="content-page text-center" style="background: #0a1a3c; padding: 50px 6%;">
+        <h2 class="text-3xl font-bold mb-3 text-white">Ready to Build Your Vision?</h2>
+        <p class="text-lg text-[#dcdcdc] mb-8">Contact our team today for a comprehensive consultation and project estimation.</p>
+        <a href="javascript:void(0)" onclick="renderPage('contact')" class="btn py-3 px-10 rounded-full font-bold shadow-lg text-lg" style="background: #f0a500; color: #0a1a3c; border: 2px solid #f0a500;">
+            <i class="fas fa-phone-alt mr-2"></i> Get a Free Estimate
+        </a>
+    </section>
+</script>
+
+<!-- ABOUT US TEMPLATE -->
+<script type="text/template" id="about-template">
+    <section class="content-page" style="background: #0a1a3c;">
+        <div class="container text-center">
+            <h2 class="section-title">About Our Firm</h2>
+            <div class="text-left mt-10 space-y-6 text-gray-300 max-w-4xl mx-auto">
+                <p class="text-lg font-semibold text-[#f0a500]">Our Vision & Mission</p>
+                <p>
+                    <strong>Anil Arote Associates</strong> was founded on the principles of integrity, precision, and innovation. We recognized the need for a unified approach to construction and design, offering clients the convenience and assurance of having structural engineering, architecture, and contracting managed by a single, expert team.
+                </p>
+                <p>
+                    Our mission is to transform blueprints into robust realities. We specialize in navigating the complexities of modern construction, ensuring every project, whether a custom home or a commercial development, is structurally sound, legally compliant, and delivered on time and within budget.
+                </p>
+                <p class="text-lg font-semibold text-[#f0a500] pt-4">Commitment to Quality</p>
+                <p>
+                    We pride ourselves on our meticulous attention to detail. Our projects undergo rigorous quality control checks at every phase, from initial foundation work to final finishing touches. This commitment ensures not only the aesthetic excellence of the final product but also its long-term durability and safety for generations to come.
+                </p>
+                <div class="text-center pt-8">
+                    <img src="Anil_Arote.jpeg" alt="Team Photo" class="w-40 rounded-lg shadow-xl mx-auto">
+                    <h3 class="text-xl text-[#f4f5f7] mt-4">Er. Anil S. Arote</h3>
+                    <p class="text-[#f0a500]">Founder & Principal Engineer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</script>
+
+<!-- SERVICES TEMPLATE -->
+<script type="text/template" id="services-template">
+    <section class="content-page" style="background: #1c2c54;">
+        <div class="container text-center">
+            <h2 class="section-title">Our Comprehensive Service Offerings</h2>
+            <p class="max-w-4xl mx-auto mb-12 text-gray-300">We offer end-to-end solutions, eliminating the need to coordinate multiple firms. Our services cover every step of the development cycle.</p>
+        </div>
+        
+        <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="info-card text-center bg-[#0d1b2a] hover:bg-[#0a1a3c]">
+                <i class="fas fa-drafting-compass text-3xl text-[#b31217] mb-3"></i>
+                <h3 class="text-lg font-semibold mb-2 text-white">Architectural Design</h3>
+                <p class="text-sm text-gray-400">Innovative plans, Vastu-compliant layouts, and detailed working drawings for homes and commercial spaces.</p>
+            </div>
+            <div class="info-card text-center bg-[#0d1b2a] hover:bg-[#0a1a3c]">
+                <i class="fas fa-cogs text-3xl text-[#b31217] mb-3"></i>
+                <h3 class="text-lg font-semibold mb-2 text-white">Structural Engineering</h3>
+                <p class="text-sm text-gray-400">Precision RCC designs (IS Code compliant), seismic analysis, and foundation planning for maximum durability.</p>
+            </div>
+            <div class="info-card text-center bg-[#0d1b2a] hover:bg-[#0a1a3c]">
+                <i class="fas fa-hard-hat text-3xl text-[#b31217] mb-3"></i>
+                <h3 class="text-lg font-semibold mb-2 text-white">Turnkey Construction</h3>
+                <p class="text-sm text-gray-400">Full-scale project execution including material procurement, labor management, and rigorous quality control.</p>
+            </div>
+            <div class="info-card text-center bg-[#0d1b2a] hover:bg-[#0a1a3c]">
+                <i class="fas fa-file-contract text-3xl text-[#b31217] mb-3"></i>
+                <h3 class="text-lg font-semibold mb-2 text-white">Approvals & Permits</h3>
+                <p class="text-sm text-gray-400">Managing all necessary government permissions, NOCs, and municipal sanctions for a legal project start.</p>
+            </div>
+        </div>
+        <div class="text-center mt-12">
+            <a href="javascript:void(0)" onclick="renderPage('contact')" class="btn py-3 px-8 rounded-full font-bold text-sm" style="background: #f0a500; color: #0a1a3c;">Enquire About a Service</a>
+        </div>
+    </section>
+</script>
+
+<!-- EXPERTISE TEMPLATE -->
+<script type="text/template" id="expertise-template">
+    <section class="content-page" style="background: #0a1a3c;">
+        <div class="container text-center">
+            <h2 class="section-title">Our Project Expertise</h2>
+            <p class="max-w-4xl mx-auto mb-12 text-gray-300">Our deep experience allows us to specialize in structurally complex and diverse project types.</p>
+        </div>
+        
+        <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="info-card bg-[#1c2c54] hover:bg-[#1a294d] text-center">
+                <i class="fas fa-house-chimney-crack text-4xl text-[#f0a500] mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Residential & Bungalows</h3>
+                <p class="text-sm text-gray-400">Designing highly customized and luxurious independent homes with a focus on aesthetics and longevity.</p>
+            </div>
+            <div class="info-card bg-[#1c2c54] hover:bg-[#1a294d] text-center">
+                <i class="fas fa-store text-4xl text-[#f0a500] mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Commercial Complexes</h3>
+                <p class="text-sm text-gray-400">Strategic planning for retail, office spaces, and hotels to optimize functionality and ensure maximum foot traffic.</p>
+            </div>
+            <div class="info-card bg-[#1c2c54] hover:bg-[#1a294d] text-center">
+                <i class="fas fa-industry text-4xl text-[#f0a500] mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Industrial Facilities</h3>
+                <p class="text-sm text-gray-400">Clear span, heavy-duty structures for factories and warehouses, meeting specialized structural and safety requirements.</p>
+            </div>
+            <div class="info-card bg-[#1c2c54] hover:bg-[#1a294d] text-center md:col-span-2 lg:col-span-1 mx-auto">
+                <i class="fas fa-landmark text-4xl text-[#f0a500] mb-3"></i>
+                <h3 class="text-xl font-bold mb-2">Government Projects</h3>
+                <p class="text-sm text-gray-400">Experience in high-standard public works, institutional buildings, and critical municipal infrastructure like WTPs and O.W.T.</p>
+            </div>
+        </div>
+    </section>
+</script>
+
+<!-- PROJECTS TEMPLATE -->
+<script type="text/template" id="projects-template">
+    <section class="content-page" style="background: #1c2c54; min-height: 50vh;">
+        <div class="container text-center">
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="text-xl text-[#f0a500] mb-20">Project Showcase Coming Soon!</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="p-6 bg-[#0a1a3c] rounded-lg shadow-xl border-t-4 border-[#b31217]">
+                    <i class="fas fa-city text-4xl text-[#b31217] mb-3"></i>
+                    <h3 class="text-lg font-semibold mb-2">Taroda Residential Towers</h3>
+                    <p class="text-sm text-gray-400">Role: Structural Design & Turnkey Contractor</p>
+                </div>
+                <div class="p-6 bg-[#0a1a3c] rounded-lg shadow-xl border-t-4 border-[#b31217]">
+                    <i class="fas fa-school text-4xl text-[#b31217] mb-3"></i>
+                    <h3 class="text-lg font-semibold mb-2">Nanded Public School</h3>
+                    <p class="text-sm text-gray-400">Role: Architectural Planning & Approvals</p>
+                </div>
+                <div class="p-6 bg-[#0a1a3c] rounded-lg shadow-xl border-t-4 border-[#b31217]">
+                    <i class="fas fa-water text-4xl text-[#b31217] mb-3"></i>
+                    <h3 class="text-lg font-semibold mb-2">Municipal Water Tank</h3>
+                    <p class="text-sm text-gray-400">Role: Precision Structural Engineering</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</script>
+
+<!-- CONTACT TEMPLATE -->
+<script type="text/template" id="contact-template">
+    <section class="content-page" style="background: #0a1a3c;">
+        <div class="container text-center">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="max-w-4xl mx-auto mb-10 text-gray-300">We look forward to discussing your next project. Fill out the form below or use our contact details to reach us directly.</p>
+        </div>
+        
+        <div class="container max-w-4xl">
+            <div class="contact-form-layout bg-[#1c2c54] p-8 rounded-xl shadow-2xl">
+                <form id="contactForm">
+                    <input type="text" name="fullName" required placeholder="Full Name" class="w-full p-3 mb-4 rounded-lg bg-[#0d1b2a] border border-[#0a1a3c] text-white">
+                    <input type="email" name="email" required placeholder="Email Address" class="w-full p-3 mb-4 rounded-lg bg-[#0d1b2a] border border-[#0a1a3c] text-white">
+                    <input type="tel" name="phone" required placeholder="Phone Number" class="w-full p-3 mb-4 rounded-lg bg-[#0d1b2a] border border-[#0a1a3c] text-white">
+                    <select name="projectType" class="w-full p-3 mb-4 rounded-lg bg-[#0d1b2a] border border-[#0a1a3c] text-gray-300">
+                        <option value="" disabled selected>Select a project type</option>
+                        <option value="residential">Residential Design/Build</option>
+                        <option value="commercial">Commercial/Retail</option>
+                        <option value="structural">Structural Design Only</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <textarea rows="4" name="description" required placeholder="Describe your project and requirements..." class="w-full p-3 mb-4 rounded-lg bg-[#0d1b2a] border border-[#0a1a3c] text-white"></textarea>
+                    
+                    <button type="submit" class="w-full btn-submit py-3 rounded-lg font-bold">Send Enquiry</button>
+                    <p id="contact-status" class="mt-4 text-center font-semibold" style="color: #f0a500;"></p>
+                </form>
+            </div>
+        </div>
+        
+        <div class="container max-w-4xl text-center mt-12 text-gray-300">
+            <h3 class="text-xl text-[#f4f5f7] mb-6">Find Our Office</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                <div class="space-y-4">
+                    <p><i class="fas fa-map-marker-alt text-[#f0a500] mr-2 w-5"></i>
+                        Shop No.1, House No. 24, Near Premnagar, Jain Mandir Road, Taroda (Kh), Nanded, Maharashtra 431602
+                    </p>
+                    <p><i class="fas fa-phone-alt text-[#f0a500] mr-2 w-5"></i>
+                        <a href="tel:08857820207" class="text-[#f0a500] hover:text-[#b31217]">08857820207</a>
+                    </p>
+                    <p><i class="fas fa-envelope text-[#f0a500] mr-2 w-5"></i>
+                        <a href="mailto:info@anilaroteassociates.com" class="text-[#f0a500] hover:text-[#b31217]">info@anilaroteassociates.com</a>
+                    </p>
+                </div>
+                <div class="map rounded-lg overflow-hidden shadow-xl">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15124.717195729114!2d77.300588!3d19.018972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bda69f700000001%3A0x678794c45b7f2f11!2sJain%20Mandir%20Road%2C%20Taroda%20(Kh)%2C%20Nanded%2C%20Maharashtra%20431602!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin" 
+                        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+</script>
+<script>
+    // ... (Existing code)
+    
+    // ✅ Keep this URL defined globally for easy access
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyNgXGKl43jTTSTjSSBeCKxot9TTcz3ceIqUGPmk0F-QPGLwYaNGcvb9lxGhF0FH_Nb/exec"; 
+
+    // ... (Existing pageTemplates object)
+    
+    /**
+     * Renders the specified page content by fetching it from the template script block.
+     * This handles the core routing and content update.
+     * @param {string} pageName - The key name of the page to render (e.g., 'home', 'about').
+     */
+    window.renderPage = function(pageName) {
+        const templateId = pageTemplates[pageName];
+        // ... (Existing nav link update logic)
+        
+        // 2. Render Content with fade effect
+        if (templateElement) {
+            appContent.style.opacity = 0;
+            setTimeout(() => {
+                appContent.innerHTML = templateElement.innerHTML;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                appContent.style.opacity = 1;
+                
+                // === NEW LOGIC: Check and Attach Form Listener ===
+                if (pageName === 'contact') {
+                    attachFormSubmitListener();
+                }
+                // ===============================================
+                
+            }, 400); 
+        }
+    }
+    
+    /**
+     * Attaches the Apps Script submission logic to the contact form.
+     */
+    function attachFormSubmitListener() {
+        // Since content is loaded dynamically, we must grab the form every time
+        const form = document.getElementById('contactForm');
+        const statusMessage = document.getElementById('contact-status');
+
+        if (form) {
+            // Remove the mock function
+            window.showContactSuccess = null;
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                
+                statusMessage.textContent = 'Sending...';
+                
+                const formData = new FormData(form);
+                
+                fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    body: formData 
+                })
+                .then(response => {
+                    if (response.ok) {
+                        statusMessage.textContent = '✅ Enquiry Sent Successfully! We will contact you shortly.';
+                        form.reset(); 
+                    } else {
+                        statusMessage.textContent = '❌ Error submitting form. Please check your connection or try again.';
+                    }
+                })
+                .catch(error => {
+                    console.error('Submission error:', error);
+                    statusMessage.textContent = '❌ Network error. Check console.';
+                });
+            });
+        }
+    }
+
+
+    // --- (Existing showContactSuccess is now deprecated/replaced by attachFormSubmitListener logic) ---
+
+    // --- Initial Load ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // Render the home page on initial load
+        renderPage('home');
+    });
+    
+    // Attach click listeners to navigation links (Existing code)
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const page = e.currentTarget.getAttribute('data-page');
+            renderPage(page);
+        });
+    });
+
+</script>
+        <div class="container max-w-4xl text-center mt-12 text-gray-300">
+            <h3 class="text-xl text-[#f4f5f7] mb-6">Find Our Office</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                <div class="space-y-4">
+                    <p><i class="fas fa-map-marker-alt text-[#f0a500] mr-2 w-5"></i>
+                        Shop No.1, House No. 24, Near Premnagar, Jain Mandir Road, Taroda (Kh), Nanded, Maharashtra 431602
+                    </p>
+                    <p><i class="fas fa-phone-alt text-[#f0a500] mr-2 w-5"></i>
+                        <a href="tel:08857820207" class="text-[#f0a500] hover:text-[#b31217]">08857820207</a>
+                    </p>
+                    <p><i class="fas fa-envelope text-[#f0a500] mr-2 w-5"></i>
+                        <a href="mailto:info@anilaroteassociates.com" class="text-[#f0a500] hover:text-[#b31217]">info@anilaroteassociates.com</a>
+                    </p>
+                </div>
+                <div class="map rounded-lg overflow-hidden shadow-xl">
+                    <iframe 
+                        src="https://www.google.com/maps?q=Anil+Arote+Associates,+Nanded,+Maharashtra&output=embed" 
+                        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+</script>
+
+<!-- ========================================================= -->
+<!-- 3. SCRIPT.JS CONTENT (Internal JavaScript Block) -->
+<!-- ========================================================= -->
+<script>
+    const appContent = document.getElementById('app-content');
+    const navLinks = document.querySelectorAll('#main-nav a');
+    
+    // Map page names to their template element IDs
+    const pageTemplates = {
+        home: 'home-template',
+        about: 'about-template',
+        services: 'services-template',
+        expertise: 'expertise-template',
+        projects: 'projects-template',
+        contact: 'contact-template'
+    };
+    
+    /**
+     * Renders the specified page content by fetching it from the template script block.
+     * This handles the core routing and content update.
+     * @param {string} pageName - The key name of the page to render (e.g., 'home', 'about').
+     */
+    window.renderPage = function(pageName) {
+        const templateId = pageTemplates[pageName];
+        if (!templateId) {
+            console.error(`Template for page ${pageName} not found.`);
+            pageName = 'home'; // Fallback
+        }
+        
+        const templateElement = document.getElementById(templateId);
+        
+        // 1. Update Navigation Active State
+        navLinks.forEach(link => {
+            if (link.getAttribute('data-page') === pageName) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+        
+        // 2. Render Content with fade effect
+        if (templateElement) {
+            appContent.style.opacity = 0;
+            setTimeout(() => {
+                appContent.innerHTML = templateElement.innerHTML;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                appContent.style.opacity = 1;
+            }, 400); 
+        }
+    }
+    
+    /**
+     * Handles the contact form submission status display (mocking a backend success).
+     */
+    window.showContactSuccess = function() {
+        const statusElement = document.getElementById('contact-status');
+        statusElement.innerHTML = `\
+            <i class="fas fa-check-circle mr-2"></i> Thank you! Your enquiry has been received. We will contact you shortly.\
+        `;
+        setTimeout(() => {
+            statusElement.innerHTML = '';
+        }, 5000);
+        document.querySelector('.contact-form-layout form').reset();
+    }
+
+    // --- Initial Load ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // Render the home page on initial load
+        renderPage('home');
+    });
+    
+    // Attach click listeners to navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const page = e.currentTarget.getAttribute('data-page');
+            renderPage(page);
+        });
+    });
+
+</script>
+</body>
+</html>
