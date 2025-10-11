@@ -1,104 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anil Arote Associates - Structural Engineer | Architect | Contractor</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Raleway:wght@400;600&family=Slabo+13px&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anil Arote Associates - Structural Engineer | Architect | Contractor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Raleway:wght@400;600&family=Slabo+13px&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- =============================================== -->
-  <!-- 1. STYLE.CSS CONTENT (Internal CSS Block) -->
-  <!-- =============================================== -->
-  <style>
-    /* Global & Core Styles */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Raleway', 'Inter', sans-serif;
-      background-color: #0d1b2a;
-      color: #f4f5f7;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    h1, h2, h3 {
-      font-family: 'Slabo 13px', serif;
-      color: #ffffff;
-    }
-    a { text-decoration: none; color: #ffffff; transition: all 0.3s ease; }
-    a:hover { color: #f0a500; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+    <!-- =============================================== -->
+    <!-- 1. STYLE.CSS CONTENT (Internal CSS Block) -->
+    <!-- =============================================== -->
+    <style>
+        /* Global & Core Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Raleway', 'Inter', sans-serif;
+            background-color: #0d1b2a;
+            color: #f4f5f7;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        h1, h2, h3 {
+            font-family: 'Slabo 13px', serif;
+            color: #ffffff;
+        }
+        a { text-decoration: none; color: #ffffff; transition: all 0.3s ease; }
+        a:hover { color: #f0a500; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
 
-    /* Header & Navbar */
-    header.navbar {
-      background: linear-gradient(90deg, #0a1a3c, #b31217);
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 8px 6%; position: sticky; top: 0; z-index: 10;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
-    }
-    .logo { cursor: pointer; display: flex; align-items: center; gap: 12px; }
-    .logo img { height: 55px; width: auto; border-radius: 8px; }
-    .logo-text h1 { font-size: 1.3rem; line-height: 1.1; color: #ffffff; }
-    .logo-text p { font-size: 0.8rem; color: #dcdcdc; letter-spacing: 0.5px; }
-    nav a {
-      margin-left: 18px; font-weight: 600; font-size: 0.95rem; cursor: pointer;
-      position: relative; padding-bottom: 5px;
-    }
-    nav a.active::after {
-        content: ""; display: block; width: 100%; height: 2px;
-        background: #f0a500; position: absolute; bottom: 0; left: 0;
-    }
+        /* Header & Navbar */
+        header.navbar {
+            background: linear-gradient(90deg, #132c60, #b31c21);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 8px 6%; position: sticky; top: 0; z-index: 10;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+        }
+        .logo { cursor: pointer; display: flex; align-items: center; gap: 12px; }
+        .logo img { height: 55px; width: auto; border-radius: 8px; }
+        .logo-text h1 { font-size: 1.3rem; line-height: 1.1; color: #ffffff; }
+        .logo-text p { font-size: 0.8rem; color: #dcdcdc; letter-spacing: 0.5px; }
+        nav a {
+            margin-left: 18px; font-weight: 600; font-size: 0.95rem; cursor: pointer;
+            position: relative; padding-bottom: 5px;
+            /* Ensure text-color is white for all nav links by default */
+            color: #ffffff; 
+        }
+        nav a:hover {
+            color: #f0a500;
+        }
+        nav a.active {
+            color: #f0a500; /* Active link color */
+        }
+        nav a.active::after {
+            content: ""; display: block; width: 100%; height: 2px;
+            background: #f0a500; position: absolute; bottom: 0; left: 0;
+        }
+        .btn-submit {
+             background: linear-gradient(90deg, #b31217, #f0a500); 
+             color: #fff;
+             transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(240, 165, 0, 0.4);
+        }
 
-    /* Dynamic Content Styles */
-    #app-content { flex-grow: 1; min-height: 65vh; transition: opacity 0.4s ease; }
-    
-    .hero-page {
-      position: relative; height: 70vh;
-      background: linear-gradient(135deg, rgba(10, 26, 60, 0.4), rgba(179, 18, 23, 0.4)),
-                  url("LogoAnil.png") center/cover no-repeat;
-      display: flex; justify-content: center; align-items: center;
-      text-align: center; color: #ffffff; padding: 0 20px;
-    }
-    
-    .content-page { padding: 80px 6%; animation: fadeIn 0.6s ease-out; }
-    .section-title { font-size: 2.2rem; margin-bottom: 40px; color: #f0a500; position: relative; display: inline-block; text-align: center; }
-    .section-title::after { content: ""; display: block; width: 60%; height: 3px; background: #b31217; margin: 8px auto 0; border-radius: 5px; }
-    
-    .info-card {
-        background: rgba(255, 255, 255, 0.06); border-radius: 12px; padding: 30px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease;
-    }
-    .info-card:hover { transform: translateY(-5px); border: 1px solid #f0a500; }
+        /* Dynamic Content Styles */
+        #app-content { flex-grow: 1; min-height: 65vh; transition: opacity 0.4s ease; }
+        
+        .hero-page {
+            position: relative; height: 70vh;
+            /* Placeholder image as background. The original URL `LogoAnil.png` is not available. */
+            background: linear-gradient(135deg, rgba(19, 44, 96, 0.6), rgba(179, 18, 33, 0.6)),
+                        url("LogoAnil.png") center/cover no-repeat;
+            background-blend-mode: multiply;
+            display: flex; justify-content: center; align-items: center;
+            text-align: center; color: #ffffff; padding: 0 20px;
+        }
+        
+        .content-page { padding: 80px 6%; animation: fadeIn 0.6s ease-out; }
+        .section-title { font-size: 2.2rem; margin-bottom: 40px; color: #f0a500; position: relative; display: inline-block; text-align: center; }
+        .section-title::after { content: ""; display: block; width: 60%; height: 3px; background: #b31217; margin: 8px auto 0; border-radius: 5px; }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.06); border-radius: 12px; padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: transform 0.3s ease, border 0.3s ease;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .info-card:hover { transform: translateY(-5px); border: 1px solid #f0a500; }
 
-    /* Responsive Design */
-    @media (max-width: 900px) {
-        header.navbar { flex-direction: column; gap: 10px; }
-        header nav a { margin: 0 8px; font-size: 0.85rem; }
-        .hero-page { height: 60vh; }
-        .content-page { padding: 40px 4%; }
-    }
-  </style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            header.navbar { flex-direction: column; gap: 10px; }
+            header nav a { margin: 0 8px; font-size: 0.85rem; }
+            .hero-page { height: 60vh; }
+            .hero-content h1 { font-size: 2rem !important; }
+            .content-page { padding: 40px 4%; }
+        }
+    </style>
 </head>
 <body>
 <!-- Header (Always visible) -->
 <header class="navbar">
-  <div class="logo" onclick="renderPage('home')">
-    <img src="Logo.jpeg" alt="Anil Arote Associates Official Logo">
-    <div class="logo-text">
-      <h1>Anil Arote Associates</h1>
-      <p>Structural Engineer | Architect | Contractor</p>
+    <div class="logo" onclick="renderPage('home')">
+        <!-- Placeholder image used as the original is not available -->
+        <img src="Logo.jpeg" alt="Anil Arote Associates Official Logo">
+        <div class="logo-text">
+            <h1>Anil Arote Associates</h1>
+            <p>Structural Engineer | Architect | Contractor</p>
+        </div>
     </div>
-  </div>
-  <nav id="main-nav">
-    <a href="javascript:void(0)" data-page="home">Home</a>
-    <a href="javascript:void(0)" data-page="about">About Us</a>
-    <a href="javascript:void(0)" data-page="services">Services</a>
-    <a href="javascript:void(0)" data-page="expertise">Expertise</a>
-    <a href="javascript:void(0)" data-page="projects">Projects</a>
-    <a href="javascript:void(0)" data-page="contact">Contact</a>
-  </nav>
+    <nav id="main-nav">
+        <!-- Data-page attributes are used by JavaScript for navigation -->
+        <a href="javascript:void(0)" data-page="home">Home</a>
+        <a href="javascript:void(0)" data-page="about">About Us</a>
+        <a href="javascript:void(0)" data-page="services">Services</a>
+        <a href="javascript:void(0)" data-page="expertise">Career</a>
+        <a href="javascript:void(0)" data-page="projects">Projects</a>
+        <a href="javascript:void(0)" data-page="contact">Contact</a>
+    </nav>
 </header>
 
 <!-- MAIN CONTENT AREA - Dynamic content is injected here -->
@@ -106,20 +138,19 @@
 
 <!-- Footer (Always visible) -->
 <footer class="text-center py-4 bg-[#0a1a3c] border-t border-[#b31217] mt-auto">
-  <p class="text-sm text-gray-400">© 2025 Anil Arote Associates | All Rights Reserved.</p>
+    <p class="text-sm text-gray-400">© 2025 Anil Arote Associates | All Rights Reserved.</p>
 </footer>
 
 <!-- ========================================================= -->
-<!-- 2. HTML CONTENT TEMPLATES (EASIEST TO EDIT) -->
-<!-- These blocks contain the pure HTML structure for each "page." -->
-<!-- To edit the content, modify the text within these templates. -->
+<!-- 2. HTML CONTENT TEMPLATES -->
 <!-- ========================================================= -->
 
-<!-- HOME PAGE TEMPLATE (Now includes summaries) -->
+<!-- HOME PAGE TEMPLATE -->
 <script type="text/template" id="home-template">
     <section class="hero-page" id="hero">
         <div class="hero-content" style="animation: fadeInUp 1.3s ease;">
-            <img src="Logo.jpeg" alt="Anil Arote Associates Logo" class="hero-logo w-24 h-auto mx-auto rounded-lg shadow-2xl mb-4">
+            <!-- Placeholder logo used as the original is not available -->
+            <img src="Logo_bg.png" alt="Anil Arote Associates Logo" class="hero-logo w-40 h-auto mx-auto rounded-lg shadow-2xl mb-4">
             <h1 style="font-size: 2.5rem;" class="mb-3">Building Trust, Engineering Futures.</h1>
             <p style="font-size: 1.1rem; color: #e0e0e0; margin-bottom: 25px;">Structural Engineer | Architecture | Contractor</p>
             <a href="javascript:void(0)" onclick="renderPage('contact')" class="btn py-3 px-8 rounded-full font-semibold" style="background: linear-gradient(90deg, #b31217, #f0a500); color: #fff;">Start Your Project</a>
@@ -174,25 +205,143 @@
 
 <!-- ABOUT US TEMPLATE -->
 <script type="text/template" id="about-template">
-    <section class="content-page" style="background: #0a1a3c;">
-        <div class="container text-center">
-            <h2 class="section-title">About Our Firm</h2>
-            <div class="text-left mt-10 space-y-6 text-gray-300 max-w-4xl mx-auto">
-                <p class="text-lg font-semibold text-[#f0a500]">Our Vision & Mission</p>
-                <p>
-                    <strong>Anil Arote Associates</strong> was founded on the principles of integrity, precision, and innovation. We recognized the need for a unified approach to construction and design, offering clients the convenience and assurance of having structural engineering, architecture, and contracting managed by a single, expert team.
-                </p>
-                <p>
-                    Our mission is to transform blueprints into robust realities. We specialize in navigating the complexities of modern construction, ensuring every project, whether a custom home or a commercial development, is structurally sound, legally compliant, and delivered on time and within budget.
-                </p>
-                <p class="text-lg font-semibold text-[#f0a500] pt-4">Commitment to Quality</p>
-                <p>
-                    We pride ourselves on our meticulous attention to detail. Our projects undergo rigorous quality control checks at every phase, from initial foundation work to final finishing touches. This commitment ensures not only the aesthetic excellence of the final product but also its long-term durability and safety for generations to come.
-                </p>
-                <div class="text-center pt-8">
-                    <img src="Anil_Arote.jpeg" alt="Team Photo" class="w-40 rounded-lg shadow-xl mx-auto">
-                    <h3 class="text-xl text-[#f4f5f7] mt-4">Er. Anil S. Arote</h3>
-                    <p class="text-[#f0a500]">Founder & Principal Engineer</p>
+    <!-- Load Tailwind CSS in the parent HTML environment if not already loaded -->
+    <!-- This section uses Tailwind classes for styling -->
+    <section class="content-page py-16" style="background: #0a1a3c;">
+        <div class="container text-center px-4">
+            <!-- Main Title -->
+            <h2 class="section-title text-5xl font-extrabold text-[#f4f5f7] mb-12 relative inline-block after:content-[''] after:block after:w-1/3 after:h-1 after:bg-[#f0a500] after:mx-auto after:mt-2">About Us</h2>
+
+            <div class="text-left mt-10 space-y-12 text-gray-300 max-w-5xl mx-auto">
+
+                <!-- 1. Main About Us Paragraph (Styled as a prominent quote) -->
+                <div class="bg-slate-800/20 p-8 rounded-2xl shadow-xl border-l-4 border-[#f0a500]">
+                    <p class="text-xl italic font-light leading-relaxed">
+                        At **Anil Arote Associates**, we believe architecture and structure are not just about constructing
+                        buildings — they are about creating experiences that inspire, comfort, and connect. Every space we
+                        design reflects our commitment to **innovation, sustainability, and human-centered design** — turning
+                        vision into reality with purpose and precision.
+                    </p>
+                </div>
+
+                <!-- 2. Who We Are -->
+                <div class="pt-6">
+                    <h3 class="text-3xl font-bold text-[#f0a500] mb-4">Who We Are</h3>
+                    <p class="text-lg leading-relaxed">
+                        We are a team of passionate architects, structural engineers, and designers dedicated to redefining
+                        the built environment. By seamlessly blending architectural creativity with structural integrity, we
+                        craft spaces that are visually striking, functionally smart, and environmentally responsible.
+                    </p>
+                    <p class="mt-4 text-base">
+                        Our portfolio spans residential, commercial, institutional, and industrial projects — each designed to
+                        enhance life and stand the test of time.
+                    </p>
+                </div>
+
+                <!-- 3. Our Approach / Three Pillars -->
+                <div class="pt-6">
+                    <h3 class="text-3xl font-bold text-[#f0a500] mb-4">Our Approach</h3>
+                    <p class="text-lg leading-relaxed mb-8">
+                        We believe great design begins with understanding. Every project starts by listening — to our
+                        clients’ needs, lifestyles, and dreams. This insight allows us to transform ideas into spaces that are
+                        both functional and emotionally engaging.
+                    </p>
+
+                    <!-- The Three Pillars -->
+                    <div class="grid md:grid-cols-3 gap-6 text-center">
+                        <!-- Pillar 1: Creativity -->
+                        <div class="p-8 bg-slate-800 rounded-xl shadow-2xl hover:bg-slate-700/50 transition duration-300">
+                            <div class="text-[#f0a500] text-5xl mb-3">💡</div> <!-- Lightbulb for Creativity/Innovation -->
+                            <h4 class="text-2xl font-semibold text-[#f4f5f7]">Creativity</h4>
+                            <p class="text-sm mt-2 text-gray-400">Transforming challenges into innovative, beautiful, and tailored solutions.</p>
+                        </div>
+
+                        <!-- Pillar 2: Sustainability -->
+                        <div class="p-8 bg-slate-800 rounded-xl shadow-2xl hover:bg-slate-700/50 transition duration-300">
+                            <div class="text-[#f0a500] text-5xl mb-3">🌿</div> <!-- Plant for Sustainability -->
+                            <h4 class="text-2xl font-semibold text-[#f4f5f7]">Sustainability</h4>
+                            <p class="text-sm mt-2 text-gray-400">Designing responsibly using modern, efficient materials and green practices.</p>
+                        </div>
+
+                        <!-- Pillar 3: Precision -->
+                        <div class="p-8 bg-slate-800 rounded-xl shadow-2xl hover:bg-slate-700/50 transition duration-300">
+                            <div class="text-[#f0a500] text-5xl mb-3">🎯</div> <!-- Target/Dart for Precision -->
+                            <h4 class="text-2xl font-semibold text-[#f4f5f7]">Precision</h4>
+                            <p class="text-sm mt-2 text-gray-400">Ensuring structural integrity with meticulous engineering and detail.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Mission and Vision -->
+                <div class="grid md:grid-cols-2 gap-8 pt-8">
+                    <!-- Mission Card -->
+                    <div class="p-8 rounded-xl bg-slate-800/50 border border-slate-700 shadow-lg">
+                        <h4 class="text-3xl font-bold text-[#f0a500] mb-3">Our Mission</h4>
+                        <p class="text-base leading-relaxed">
+                            To deliver architectural and structural solutions that are **economical, aesthetic, and sustainable** — enriching the quality of life and contributing to a greener, more resilient future.
+                        </p>
+                    </div>
+
+                    <!-- Vision Card -->
+                    <div class="p-8 rounded-xl bg-slate-800/50 border border-slate-700 shadow-lg">
+                        <h4 class="text-3xl font-bold text-[#f0a500] mb-3">Our Vision</h4>
+                        <p class="text-base leading-relaxed">
+                            To be a leader and benchmark in the field of architectural and structural design — recognized for
+                            our expertise, integrity, ethics, and commitment to excellence. We aim to design not just buildings,
+                            but **enduring legacies** that inspire generations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 5. Core Values -->
+                <div class="pt-8">
+                    <h3 class="text-3xl font-bold text-[#f0a500] mb-6">Our Core Values</h3>
+                    <dl class="grid grid-cols-1 sm:grid-cols-3 gap-x-10 gap-y-4">
+                        <!-- Value 1: Innovation -->
+                        <div class="flex items-start space-x-3 p-4 rounded-lg bg-slate-800/30">
+                            <span class="text-[#f0a500] text-2xl font-bold flex-shrink-0">✨</span>
+                            <p>
+                                <strong class="text-[#f4f5f7] block text-lg">Innovation:</strong> Continuously pushing creative and technical boundaries.
+                            </p>
+                        </div>
+                        <!-- Value 2: Integrity -->
+                        <div class="flex items-start space-x-3 p-4 rounded-lg bg-slate-800/30">
+                            <span class="text-[#f0a500] text-2xl font-bold flex-shrink-0">🤝</span>
+                            <p>
+                                <strong class="text-[#f4f5f7] block text-lg">Integrity:</strong> Building lasting trust through honesty and ethics.
+                            </p>
+                        </div>
+                        <!-- Value 3: Sustainability -->
+                        <div class="flex items-start space-x-3 p-4 rounded-lg bg-slate-800/30">
+                            <span class="text-[#f0a500] text-2xl font-bold flex-shrink-0">🌳</span>
+                            <p>
+                                <strong class="text-[#f4f5f7] block text-lg">Sustainability:</strong> Designing responsibly for people and the planet.
+                            </p>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- 6. Team Members (Founders) -->
+                <div class="pt-20 pb-10">
+                    <h3 class="text-4xl font-extrabold text-[#f4f5f7] mb-12 border-b-2 border-[#f0a500] pb-4 max-w-4xl mx-auto">Meet The Founders</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+                        <!-- Team Member 1 Card -->
+                        <div class="text-center p-8 rounded-2xl shadow-2xl bg-slate-800 transform hover:scale-[1.03] transition-transform duration-300 border border-slate-700">
+                            <!-- Placeholder image used as the original is not available -->
+                            <img src="anil_arote.jpeg" alt="Photo of Er. Anil S. Arote" class="w-40 h-40 object-cover rounded-full shadow-2xl ring-4 ring-[#f0a500] mx-auto">
+                            <h3 class="text-2xl font-semibold text-[#f4f5f7] mt-6">Er. Anil S. Arote</h3>
+                            <p class="text-[#f0a500] text-lg mt-1">Founder & Principal Engineer</p>
+                        </div>
+
+                        <!-- Team Member 2 Card -->
+                        <div class="text-center p-8 rounded-2xl shadow-2xl bg-slate-800 transform hover:scale-[1.03] transition-transform duration-300 border border-slate-700">
+                             <!-- Placeholder image used as the original is not available -->
+                            <img src="MahekBhai.jpg" alt="Photo of Er. Mahek Bhai" class="w-40 h-40 object-cover rounded-full shadow-2xl ring-4 ring-[#f0a500] mx-auto">
+                            <h3 class="text-2xl font-semibold text-[#f4f5f7] mt-6">Er. Mahek Bhai</h3>
+                            <p class="text-[#f0a500] text-lg mt-1">Co-Founder</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -235,62 +384,174 @@
     </section>
 </script>
 
-<!-- EXPERTISE TEMPLATE -->
-<script type="text/template" id="expertise-template">
-    <section class="content-page" style="background: #0a1a3c;">
-        <div class="container text-center">
-            <h2 class="section-title">Our Project Expertise</h2>
-            <p class="max-w-4xl mx-auto mb-12 text-gray-300">Our deep experience allows us to specialize in structurally complex and diverse project types.</p>
+<!-- CAREER TEMPLATE (used by data-page="expertise") -->
+<script type="text/template" id="career-template">
+    <section class="content-page py-16" style="background: #0a1a3c;">
+        <div class="container mx-auto px-4 text-center text-white">
+            <h2 class="section-title text-4xl font-extrabold mb-4 text-[#f0a500]">Join Our Team</h2>
+            <p class="max-w-4xl mx-auto mb-16 text-xl text-gray-300">
+                We are always looking for passionate and talented individuals to help us build the future. Explore our career paths below.
+            </p>
         </div>
         
-        <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="info-card bg-[#1c2c54] hover:bg-[#1a294d] text-center">
-                <i class="fas fa-house-chimney-crack text-4xl text-[#f0a500] mb-3"></i>
-                <h3 class="text-xl font-bold mb-2">Residential & Bungalows</h3>
-                <p class="text-sm text-gray-400">Designing highly customized and luxurious independent homes with a focus on aesthetics and longevity.</p>
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- Career Card 1: Design & Engineering -->
+            <div class="info-card p-6 rounded-xl bg-[#1c2c54] hover:bg-[#1a294d] transition duration-300 shadow-2xl">
+                <i class="fas fa-drafting-compass text-4xl text-[#f0a500] mb-4"></i>
+                <h3 class="text-xl font-bold mb-2 text-white">Design & Engineering</h3>
+                <p class="text-sm text-gray-400">
+                    Innovate with us! Roles in structural design, drafting, CAD, and project modeling using the latest industry software.
+                </p>
             </div>
-            <div class="info-card bg-[#1c2c54] hover:bg-[#1a294d] text-center">
-                <i class="fas fa-store text-4xl text-[#f0a500] mb-3"></i>
-                <h3 class="text-xl font-bold mb-2">Commercial Complexes</h3>
-                <p class="text-sm text-gray-400">Strategic planning for retail, office spaces, and hotels to optimize functionality and ensure maximum foot traffic.</p>
+
+            <!-- Career Card 2: Construction & Site Ops -->
+            <div class="info-card p-6 rounded-xl bg-[#1c2c54] hover:bg-[#1a294d] transition duration-300 shadow-2xl">
+                <i class="fas fa-helmet-safety text-4xl text-[#f0a500] mb-4"></i>
+                <h3 class="text-xl font-bold mb-2 text-white">Construction & Site Ops</h3>
+                <p class="text-sm text-gray-400">
+                    Join our field teams! Opportunities for site management, safety supervision, quality control, and general contracting roles.
+                </p>
             </div>
-            <div class="info-card bg-[#1c2c54] hover:bg-[#1a294d] text-center">
-                <i class="fas fa-industry text-4xl text-[#f0a500] mb-3"></i>
-                <h3 class="text-xl font-bold mb-2">Industrial Facilities</h3>
-                <p class="text-sm text-gray-400">Clear span, heavy-duty structures for factories and warehouses, meeting specialized structural and safety requirements.</p>
+
+            <!-- Career Card 3: Sales & Business Dev -->
+            <div class="info-card p-6 rounded-xl bg-[#1c2c54] hover:bg-[#1a294d] transition duration-300 shadow-2xl">
+                <i class="fas fa-handshake text-4xl text-[#f0a500] mb-4"></i>
+                <h3 class="text-xl font-bold mb-2 text-white">Sales & Business Dev</h3>
+                <p class="text-sm text-gray-400">
+                    Help us grow! Positions focused on client acquisition, relationship management, and market expansion strategies for new projects.
+                </p>
             </div>
-            <div class="info-card bg-[#1c2c54] hover:bg-[#1a294d] text-center md:col-span-2 lg:col-span-1 mx-auto">
-                <i class="fas fa-landmark text-4xl text-[#f0a500] mb-3"></i>
-                <h3 class="text-xl font-bold mb-2">Government Projects</h3>
-                <p class="text-sm text-gray-400">Experience in high-standard public works, institutional buildings, and critical municipal infrastructure like WTPs and O.W.T.</p>
+
+            <!-- Career Card 4: Admin & Support -->
+            <div class="info-card p-6 rounded-xl bg-[#1c2c54] hover:bg-[#1a294d] transition duration-300 shadow-2xl">
+                <i class="fas fa-users-gear text-4xl text-[#f0a500] mb-4"></i>
+                <h3 class="text-xl font-bold mb-2 text-white">Admin & Support</h3>
+                <p class="text-sm text-gray-400">
+                    The backbone of our operations. Roles in HR, finance, IT, and general office administration to keep our company running smoothly.
+                </p>
             </div>
+
         </div>
+        
+        <!-- Call to Action: Drop Your CV -->
+        <div class="container mx-auto px-4 text-center mt-20">
+            <p class="text-2xl font-semibold text-gray-200 mb-6">Didn't find an open role? Drop your CV!</p>
+            <a href="mailto:info@anilaroteassociates.com" class="inline-flex items-center space-x-2 py-4 px-10 bg-[#f0a500] text-[#0a1a3c] text-lg font-bold rounded-xl hover:bg-[#d49400] transition duration-300 shadow-2xl transform hover:scale-105">
+                <span>Submit Resume for Future Openings</span>
+                <i class="fas fa-paper-plane"></i>
+            </a>
+            <p class="text-sm text-gray-400 mt-4">We will contact you if your skills match an upcoming opportunity.</p>
+        </div>
+        
     </section>
 </script>
 
-<!-- PROJECTS TEMPLATE -->
+<!-- PROJECTS TEMPLATE - UPDATED WITH GALLERY -->
 <script type="text/template" id="projects-template">
-    <section class="content-page" style="background: #1c2c54; min-height: 50vh;">
+    <section class="content-page" style="background: #0a1a3c; min-height: 80vh;">
         <div class="container text-center">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="text-xl text-[#f0a500] mb-20">Project Showcase Coming Soon!</p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-6 bg-[#0a1a3c] rounded-lg shadow-xl border-t-4 border-[#b31217]">
-                    <i class="fas fa-city text-4xl text-[#b31217] mb-3"></i>
-                    <h3 class="text-lg font-semibold mb-2">Taroda Residential Towers</h3>
-                    <p class="text-sm text-gray-400">Role: Structural Design & Turnkey Contractor</p>
+            <h2 class="section-title">Our Featured Projects</h2>
+            <p class="max-w-4xl mx-auto mb-16 text-xl text-gray-300">
+                A selection of our latest work across residential, commercial, and industrial sectors, showcasing our commitment to quality engineering and design.
+            </p>
+        </div>
+        
+        <div class="container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Project 1: Luxury Residential Villa -->
+            <div class="project-card">
+                <div class="project-img-container">
+                    <!-- Image Placeholder: Residential -->
+                    <img src="Projects\image026.jpg" alt="Luxury Residential Villa">
                 </div>
-                <div class="p-6 bg-[#0a1a3c] rounded-lg shadow-xl border-t-4 border-[#b31217]">
-                    <i class="fas fa-school text-4xl text-[#b31217] mb-3"></i>
-                    <h3 class="text-lg font-semibold mb-2">Nanded Public School</h3>
-                    <p class="text-sm text-gray-400">Role: Architectural Planning & Approvals</p>
-                </div>
-                <div class="p-6 bg-[#0a1a3c] rounded-lg shadow-xl border-t-4 border-[#b31217]">
-                    <i class="fas fa-water text-4xl text-[#b31217] mb-3"></i>
-                    <h3 class="text-lg font-semibold mb-2">Municipal Water Tank</h3>
-                    <p class="text-sm text-gray-400">Role: Precision Structural Engineering</p>
+                <div class="project-info">
+                    <p class="project-category">Residential</p>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Sangita Ajamani</h3>
+                    <p class="text-sm text-gray-400">
+                    </p>
                 </div>
             </div>
+            
+            <!-- Project 2: Corporate Office Complex -->
+            <div class="project-card">
+                <div class="project-img-container">
+                    <!-- Image Placeholder: Commercial -->
+                    <img src="https://placehold.co/600x400/1c2c54/f0a500?text=OFFICE+TOWER" alt="Corporate Office Complex">
+                </div>
+                <div class="project-info">
+                    <p class="project-category">Commercial</p>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Horizon Business Park</h3>
+                    <p class="text-sm text-gray-400">
+                        Structural and architectural design for a G+5 commercial complex. Managed site execution and obtained all necessary municipal approvals.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Project 3: Industrial Warehouse -->
+            <div class="project-card">
+                <div class="project-img-container">
+                    <!-- Image Placeholder: Industrial -->
+                    <img src="https://placehold.co/600x400/1c2c54/f0a500?text=INDUSTRIAL+SHED" alt="Industrial Warehouse">
+                </div>
+                <div class="project-info">
+                    <p class="project-category">Industrial</p>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Precision Manufacturing Unit</h3>
+                    <p class="text-sm text-gray-400">
+                        Design and construction of a heavy-duty industrial shed and factory floor, adhering to rigorous loading and safety standards.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Project 4: Bridge & Infrastructure -->
+            <div class="project-card">
+                <div class="project-img-container">
+                    <!-- Image Placeholder: Infrastructure -->
+                    <img src="https://placehold.co/600x400/1c2c54/f0a500?text=INFRASTRUCTURE+PROJECT" alt="Infrastructure Project">
+                </div>
+                <div class="project-info">
+                    <p class="project-category">Infrastructure</p>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Rural Road Bridge Re-design</h3>
+                    <p class="text-sm text-gray-400">
+                        Structural redesign and stability assessment for an existing critical infrastructure component. Utilized advanced finite element analysis.
+                    </p>
+                </div>
+            </div>
+
+             <!-- Project 5: Institutional Building -->
+             <div class="project-card">
+                <div class="project-img-container">
+                    <!-- Image Placeholder: Institutional -->
+                    <img src="https://placehold.co/600x400/1c2c54/f0a500?text=INSTITUTIONAL" alt="Institutional Project">
+                </div>
+                <div class="project-info">
+                    <p class="project-category">Institutional</p>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Nanded University Library</h3>
+                    <p class="text-sm text-gray-400">
+                        Architectural planning and structural detailing for a large institutional library, optimizing natural light and space for heavy foot traffic.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Project 6: Redevelopment & Retrofit -->
+            <div class="project-card">
+                <div class="project-img-container">
+                    <!-- Image Placeholder: Redevelopment -->
+                    <img src="https://placehold.co/600x400/1c2c54/f0a500?text=RENOVATION" alt="Redevelopment Project">
+                </div>
+                <div class="project-info">
+                    <p class="project-category">Renovation</p>
+                    <h3 class="text-2xl font-bold mb-2 text-white">Historic Building Seismic Retrofit</h3>
+                    <p class="text-sm text-gray-400">
+                        Structural retrofit and renovation of an old city structure to meet modern seismic codes without compromising its heritage aesthetic.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center mt-16">
+            <a href="javascript:void(0)" onclick="renderPage('contact')" class="btn py-3 px-8 rounded-full font-bold text-sm" style="background: #f0a500; color: #0a1a3c;">Discuss Your Project</a>
         </div>
     </section>
 </script>
@@ -347,121 +608,6 @@
         </div>
     </section>
 </script>
-<script>
-    // ... (Existing code)
-    
-    // ✅ Keep this URL defined globally for easy access
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyNgXGKl43jTTSTjSSBeCKxot9TTcz3ceIqUGPmk0F-QPGLwYaNGcvb9lxGhF0FH_Nb/exec"; 
-
-    // ... (Existing pageTemplates object)
-    
-    /**
-     * Renders the specified page content by fetching it from the template script block.
-     * This handles the core routing and content update.
-     * @param {string} pageName - The key name of the page to render (e.g., 'home', 'about').
-     */
-    window.renderPage = function(pageName) {
-        const templateId = pageTemplates[pageName];
-        // ... (Existing nav link update logic)
-        
-        // 2. Render Content with fade effect
-        if (templateElement) {
-            appContent.style.opacity = 0;
-            setTimeout(() => {
-                appContent.innerHTML = templateElement.innerHTML;
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                appContent.style.opacity = 1;
-                
-                // === NEW LOGIC: Check and Attach Form Listener ===
-                if (pageName === 'contact') {
-                    attachFormSubmitListener();
-                }
-                // ===============================================
-                
-            }, 400); 
-        }
-    }
-    
-    /**
-     * Attaches the Apps Script submission logic to the contact form.
-     */
-    function attachFormSubmitListener() {
-        // Since content is loaded dynamically, we must grab the form every time
-        const form = document.getElementById('contactForm');
-        const statusMessage = document.getElementById('contact-status');
-
-        if (form) {
-            // Remove the mock function
-            window.showContactSuccess = null;
-            
-            form.addEventListener('submit', function(e) {
-                e.preventDefault(); 
-                
-                statusMessage.textContent = 'Sending...';
-                
-                const formData = new FormData(form);
-                
-                fetch(WEB_APP_URL, {
-                    method: 'POST',
-                    body: formData 
-                })
-                .then(response => {
-                    if (response.ok) {
-                        statusMessage.textContent = '✅ Enquiry Sent Successfully! We will contact you shortly.';
-                        form.reset(); 
-                    } else {
-                        statusMessage.textContent = '❌ Error submitting form. Please check your connection or try again.';
-                    }
-                })
-                .catch(error => {
-                    console.error('Submission error:', error);
-                    statusMessage.textContent = '❌ Network error. Check console.';
-                });
-            });
-        }
-    }
-
-
-    // --- (Existing showContactSuccess is now deprecated/replaced by attachFormSubmitListener logic) ---
-
-    // --- Initial Load ---
-    document.addEventListener('DOMContentLoaded', () => {
-        // Render the home page on initial load
-        renderPage('home');
-    });
-    
-    // Attach click listeners to navigation links (Existing code)
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const page = e.currentTarget.getAttribute('data-page');
-            renderPage(page);
-        });
-    });
-
-</script>
-        <div class="container max-w-4xl text-center mt-12 text-gray-300">
-            <h3 class="text-xl text-[#f4f5f7] mb-6">Find Our Office</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                <div class="space-y-4">
-                    <p><i class="fas fa-map-marker-alt text-[#f0a500] mr-2 w-5"></i>
-                        Shop No.1, House No. 24, Near Premnagar, Jain Mandir Road, Taroda (Kh), Nanded, Maharashtra 431602
-                    </p>
-                    <p><i class="fas fa-phone-alt text-[#f0a500] mr-2 w-5"></i>
-                        <a href="tel:08857820207" class="text-[#f0a500] hover:text-[#b31217]">08857820207</a>
-                    </p>
-                    <p><i class="fas fa-envelope text-[#f0a500] mr-2 w-5"></i>
-                        <a href="mailto:info@anilaroteassociates.com" class="text-[#f0a500] hover:text-[#b31217]">info@anilaroteassociates.com</a>
-                    </p>
-                </div>
-                <div class="map rounded-lg overflow-hidden shadow-xl">
-                    <iframe 
-                        src="https://www.google.com/maps?q=Anil+Arote+Associates,+Nanded,+Maharashtra&output=embed" 
-                        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-</script>
 
 <!-- ========================================================= -->
 <!-- 3. SCRIPT.JS CONTENT (Internal JavaScript Block) -->
@@ -470,78 +616,92 @@
     const appContent = document.getElementById('app-content');
     const navLinks = document.querySelectorAll('#main-nav a');
     
-    // Map page names to their template element IDs
+    // Map page names (from data-page attribute) to their template element IDs
     const pageTemplates = {
         home: 'home-template',
         about: 'about-template',
         services: 'services-template',
-        expertise: 'expertise-template',
+        expertise: 'career-template', // Maps "Career" nav item to "career-template"
         projects: 'projects-template',
         contact: 'contact-template'
     };
-    
+
     /**
-     * Renders the specified page content by fetching it from the template script block.
-     * This handles the core routing and content update.
-     * @param {string} pageName - The key name of the page to render (e.g., 'home', 'about').
+     * Renders the requested page content and updates the active navigation link.
+     * @param {string} pageKey - The key corresponding to the page template.
      */
-    window.renderPage = function(pageName) {
-        const templateId = pageTemplates[pageName];
-        if (!templateId) {
-            console.error(`Template for page ${pageName} not found.`);
-            pageName = 'home'; // Fallback
-        }
-        
+    function renderPage(pageKey) {
+        // 1. Check if template exists
+        const templateId = pageTemplates[pageKey];
         const templateElement = document.getElementById(templateId);
-        
-        // 1. Update Navigation Active State
+
+        if (!templateElement) {
+            appContent.innerHTML = `<section class="content-page text-center py-20"><h2 class="section-title">404 Not Found</h2><p class="text-xl text-gray-400 mt-4">The page '${pageKey}' could not be loaded.</p></section>`;
+            return;
+        }
+
+        // 2. Load content and apply transition
+        appContent.style.opacity = 0; // Start fade-out
+        setTimeout(() => {
+            appContent.innerHTML = templateElement.innerHTML;
+            window.scrollTo(0, 0); // Scroll to top on page change
+            appContent.style.opacity = 1; // Fade-in complete
+
+            // 3. Attach event listeners for dynamic content (like the contact form)
+            if (pageKey === 'contact') {
+                setupContactFormHandler();
+            }
+        }, 300); // Delay matches CSS transition for a smoother change
+
+        // 4. Update active navigation class
         navLinks.forEach(link => {
-            if (link.getAttribute('data-page') === pageName) {
+            link.classList.remove('active');
+            if (link.getAttribute('data-page') === pageKey) {
                 link.classList.add('active');
-            } else {
-                link.classList.remove('active');
             }
         });
-        
-        // 2. Render Content with fade effect
-        if (templateElement) {
-            appContent.style.opacity = 0;
-            setTimeout(() => {
-                appContent.innerHTML = templateElement.innerHTML;
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                appContent.style.opacity = 1;
-            }, 400); 
-        }
-    }
-    
-    /**
-     * Handles the contact form submission status display (mocking a backend success).
-     */
-    window.showContactSuccess = function() {
-        const statusElement = document.getElementById('contact-status');
-        statusElement.innerHTML = `\
-            <i class="fas fa-check-circle mr-2"></i> Thank you! Your enquiry has been received. We will contact you shortly.\
-        `;
-        setTimeout(() => {
-            statusElement.innerHTML = '';
-        }, 5000);
-        document.querySelector('.contact-form-layout form').reset();
     }
 
-    // --- Initial Load ---
-    document.addEventListener('DOMContentLoaded', () => {
-        // Render the home page on initial load
-        renderPage('home');
-    });
-    
-    // Attach click listeners to navigation links
+    /**
+     * Sets up the event listener for the contact form submission.
+     */
+    function setupContactFormHandler() {
+        const form = document.getElementById('contactForm');
+        const status = document.getElementById('contact-status');
+
+        if (form) {
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                status.textContent = 'Sending...';
+
+                // Simulate API call/form submission delay
+                setTimeout(() => {
+                    const formData = new FormData(form);
+                    const name = formData.get('fullName');
+
+                    // Mock Success Message
+                    status.textContent = `Thank you, ${name}! Your enquiry has been sent successfully. We will respond within 48 hours.`;
+                    status.style.color = '#f0a500'; // Success color
+                    
+                    // Clear form after submission
+                    form.reset(); 
+                }, 1500); 
+            });
+        }
+    }
+
+    // 5. Initialize navigation listeners
     navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const page = e.currentTarget.getAttribute('data-page');
+        link.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
             renderPage(page);
         });
     });
 
+    // 6. Initial page load
+    window.onload = () => {
+        // Render the home page on initial load
+        renderPage('home'); 
+    };
+
 </script>
-</body>
-</html>
