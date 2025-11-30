@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Anil Admin Secure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
+
+    <style>
+        body { background-color: #0f172a; color: white; font-family: sans-serif; -webkit-tap-highlight-color: transparent; }
+        .view-section { padding-bottom: 80px; }
+        .login-box { background: linear-gradient(145deg, #1e293b, #0f172a); }
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen" class="min-h-screen flex flex-col justify-center items-center p-6">
+        <div class="login-box w-full max-w-sm p-8 rounded-2xl shadow-2xl border border-gray-700 text-center">
+            <i class="fas fa-user-shield text-5xl text-[#f0a500] mb-6"></i>
+            <h2 class="text-2xl font-bold mb-2">Admin Access</h2>
+            <p class="text-gray-400 text-sm mb-6">Enter credentials to manage projects.</p>
+            <form onsubmit="window.handleLogin(event)" class="space-y-4 text-left">
+                <div>
+                    <label class="text-xs uppercase font-bold text-gray-500">Email</label>
+                    <input type="email" id="login-email" required class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white focus:border-[#f0a500] outline-none">
+                </div>
+                <div>
+                    <label class="text-xs uppercase font-bold text-gray-500">Password</label>
+                    <input type="password" id="login-pass" required class="w-full bg-gray-900 border border-gray-700 rounded-lg p-3 text-white focus:border-[#f0a500] outline-none">
+                </div>
+                <button type="submit" id="btn-login" class="w-full bg-[#f0a500] text-[#0a1a3c] font-bold py-3 rounded-lg hover:brightness-110 transition">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="app-screen" class="hidden">
+        <div class="bg-[#b31217] p-4 sticky top-0 z-20 shadow-lg flex justify-between items-center">
+            <h1 class="text-lg font-bold">Admin Panel</h1>
+            <button onclick="window.handleLogout()" class="text-xs bg-white/20 px-3 py-1 rounded hover:bg-white/30"><i class="fas fa-sign-out-alt mr-1"></i> Logout</button>
+        </div>
+
+        <div id="view-list" class="view-section p-4">
+            <div class="mb-8">
+                <div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2">
+                    <i class="fas fa-hard-hat text-[#f0a500]"></i>
+                    <h2 class="text-[#f0a500] text-sm font-bold uppercase tracking-wider">Construction</h2>
+                </div>
+                <div id="list-construction" class="space-y-3"></div>
+                <p id="msg-no-construction" class="text-gray-500 text-xs hidden">No construction projects yet.</p>
+            </div>
+
+            <div class="mb-8">
+                <div class="flex items-center gap-2 mb-4 border-b border-gray-700 pb-2">
+                    <i class="fas fa-couch text-[#38bdf8]"></i>
+                    <h2 class="text-[#38bdf8] text-sm font-bold uppercase tracking-wider">Interior Design</h2>
+                </div>
+                <div id="list-interior" class="space-y-3"></div>
+                <p id="msg-no-interior" class="text-gray-500 text-xs hidden">No interior projects yet.</p>
+            </div>
+
+            <div class="mt-8 text-center border-t border-gray-800 pt-4">
+                <button onclick="window.seedOldProjects()" class="text-xs text-gray-500 underline hover:text-[#f0a500]"><i class="fas fa-database mr-1"></i> Load Sample Data</button>
+            </div>
+        </div>
+
+        <div id="view-add" class="view-section p-4 hidden">
+            <h2 class="text-[#f0a500] text-xl font-bold mb-6">Add New Project</h2>
+            <form onsubmit="window.handleAddSubmit(event)" class="space-y-4">
+                <div class="relative border-2 border-dashed border-gray-600 bg-gray-800 rounded-xl h-40 flex flex-col justify-center items-center overflow-hidden">
+                    <input type="file" id="file-input" accept="image/*" class="absolute inset-0 opacity-0 z-10 w-full h-full cursor-pointer" onchange="window.handleFileSelect(event)">
+                    <div class="text-center p-4">
+                        <i class="fas fa-cloud-upload-alt text-3xl text-[#f0a500] mb-2"></i>
+                        <p class="text-sm text-gray-300">Tap to upload photo</p>
+                    </div>
+                    <div id="preview-container" class="absolute inset-0 z-0 hidden bg-black">
+                        <img id="preview-img" class="w-full h-full object-cover opacity-70">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs text-gray-400 font-bold uppercase">Category</label>
+                    <select name="category" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 mt-1 text-white outline-none focus:border-[#f0a500]">
+                        <option value="Construction">Construction / Architecture</option>
+                        <option value="Interior">Interior Design</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-xs text-gray-400 font-bold uppercase">Project Title</label>
+                    <input type="text" name="title" required placeholder="e.g. Modern Villa" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 mt-1 text-white outline-none focus:border-[#f0a500]">
+                </div>
+                <div>
+                    <label class="text-xs text-gray-400 font-bold uppercase">Location</label>
+                    <input type="text" name="location" required placeholder="e.g. Pune" class="w-full bg-gray-800 border border-gray-600 rounded-lg p-3 mt-1 text-white outline-none focus:border-[#f0a500]">
+                </div>
+                <button type="submit" class="w-full bg-[#f0a500] text-[#0a1a3c] font-bold py-4 rounded-xl text-lg shadow-lg mt-4 active:scale-95 transition">Save Project</button>
+            </form>
+        </div>
+
+        <div class="fixed bottom-0 w-full bg-[#0a1a3c] border-t border-gray-700 flex justify-around items-center h-16 z-30 shadow-2xl">
+            <button onclick="window.switchView('list')" id="tab-list" class="tab-item text-[#f0a500] flex flex-col items-center w-1/2">
+                <i class="fas fa-th-list text-lg mb-1"></i><span class="text-[10px]">Dashboard</span>
+            </button>
+            <div class="w-px h-8 bg-gray-700"></div>
+            <button onclick="window.switchView('add')" id="tab-add" class="tab-item text-gray-500 flex flex-col items-center w-1/2">
+                <i class="fas fa-plus-circle text-lg mb-1"></i><span class="text-[10px]">Add New</span>
+            </button>
+        </div>
+
+        <div id="loading-overlay" class="fixed inset-0 bg-black/80 z-50 flex flex-col items-center justify-center hidden">
+            <i class="fas fa-circle-notch fa-spin text-[#f0a500] text-4xl mb-4"></i>
+            <p class="text-white font-bold mt-4">Processing...</p>
+        </div>
+    </div>
+
+    <script>
+        // CONFIG
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKKeBpU3ddp0vCk2INATybMhuRu3pMfKQ",
+            authDomain: "anilaroteapp.firebaseapp.com",
+            projectId: "anilaroteapp",
+            storageBucket: "anilaroteapp.appspot.com",
+            messagingSenderId: "900919422548",
+            appId: "1:900919422548:web:701f15e223b7729fd0c7c1"
+        };
+
+        // INIT
+        window.onload = function() {
+            if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+            window.auth = firebase.auth();
+            window.db = firebase.firestore();
+            window.storage = firebase.storage();
+
+            window.auth.onAuthStateChanged((user) => {
+                if (user) {
+                    document.getElementById('login-screen').classList.add('hidden');
+                    document.getElementById('app-screen').classList.remove('hidden');
+                    window.fetchProjects();
+                } else {
+                    document.getElementById('login-screen').classList.remove('hidden');
+                    document.getElementById('app-screen').classList.add('hidden');
+                }
+            });
+        };
+
+        // AUTH FUNCTIONS
+        window.handleLogin = (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const pass = document.getElementById('login-pass').value;
+            const btn = document.getElementById('btn-login');
+            btn.textContent = "Verifying...";
+            window.auth.signInWithEmailAndPassword(email, pass).catch(err => {
+                alert("Login Failed: " + err.message);
+                btn.textContent = "Login";
+            });
+        };
+
+        window.handleLogout = () => window.auth.signOut();
+
+        // UI FUNCTIONS
+        window.switchView = (viewName) => {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById('view-' + viewName).classList.remove('hidden');
+            document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('text-[#f0a500]'));
+            document.getElementById('tab-' + viewName).classList.add('text-[#f0a500]');
+            if(viewName === 'list') window.fetchProjects();
+        };
+
+        window.handleFileSelect = (e) => {
+            const file = e.target.files[0];
+            if(file){
+                document.getElementById('preview-img').src = URL.createObjectURL(file);
+                document.getElementById('preview-container').classList.remove('hidden');
+            }
+        };
+
+        // DATA FUNCTIONS
+        window.fetchProjects = () => {
+            const listConstruct = document.getElementById('list-construction');
+            const listInterior = document.getElementById('list-interior');
+            listConstruct.innerHTML = '<div class="text-xs text-gray-500">Loading...</div>';
+            listInterior.innerHTML = '<div class="text-xs text-gray-500">Loading...</div>';
+
+            window.db.collection("projects").orderBy("createdAt", "desc").get().then((snap) => {
+                listConstruct.innerHTML = ''; listInterior.innerHTML = '';
+                let hasCon = false, hasInt = false;
+
+                snap.forEach((doc) => {
+                    const data = doc.data();
+                    const itemHTML = `
+                        <div class="bg-gray-800 p-3 rounded-xl flex gap-3 items-center shadow-lg border border-gray-700">
+                            <img src="${data.imageUrl}" class="w-16 h-16 rounded-lg object-cover bg-black">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-white text-sm">${data.title}</h3>
+                                <p class="text-xs text-gray-400">${data.location}</p>
+                            </div>
+                            <button onclick="window.deleteProject('${doc.id}', '${data.imagePath}')" class="bg-red-900/30 text-red-400 p-2 rounded-full w-10 h-10 hover:bg-red-900/50"><i class="fas fa-trash-alt"></i></button>
+                        </div>`;
+
+                    if (data.category === 'Interior') { listInterior.innerHTML += itemHTML; hasInt = true; }
+                    else { listConstruct.innerHTML += itemHTML; hasCon = true; }
+                });
+
+                document.getElementById('msg-no-construction').className = hasCon ? 'hidden' : 'text-gray-500 text-xs text-center py-2';
+                document.getElementById('msg-no-interior').className = hasInt ? 'hidden' : 'text-gray-500 text-xs text-center py-2';
+            });
+        };
+
+        window.handleAddSubmit = (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const file = document.getElementById('file-input').files[0];
+            if(!file) return alert("Please select an image");
+
+            document.getElementById('loading-overlay').classList.remove('hidden');
+            const path = `projects/${Date.now()}_${file.name}`;
+
+            window.storage.ref(path).put(file)
+                .then(snap => snap.ref.getDownloadURL())
+                .then(url => window.db.collection("projects").add({
+                    title: form.title.value,
+                    location: form.location.value,
+                    category: form.category.value,
+                    imageUrl: url,
+                    imagePath: path,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                }))
+                .then(() => {
+                    alert("Saved!");
+                    form.reset();
+                    document.getElementById('preview-container').classList.add('hidden');
+                    window.switchView('list');
+                })
+                .catch(err => alert(err.message))
+                .finally(() => document.getElementById('loading-overlay').classList.add('hidden'));
+        };
+
+        window.deleteProject = (id, path) => {
+            if(!confirm("Delete this project?")) return;
+            document.getElementById('loading-overlay').classList.remove('hidden');
+            window.db.collection("projects").doc(id).delete()
+                .then(() => path ? window.storage.ref(path).delete().catch(e=>console.log(e)) : null)
+                .then(() => window.fetchProjects())
+                .finally(() => document.getElementById('loading-overlay').classList.add('hidden'));
+        };
+
+        window.seedOldProjects = () => {
+            if(!confirm("Add sample data?")) return;
+            document.getElementById('loading-overlay').classList.remove('hidden');
+            const batch = window.db.batch();
+            const samples = [
+                {title:"Arun Shete", location:"Sangli", category:"Construction"},
+                {title:"Modern Living Room", location:"Pune", category:"Interior"},
+                {title:"Abhijit Patil", location:"Kolhapur", category:"Construction"},
+                {title:"Office Space", location:"Mumbai", category:"Interior"}
+            ];
+            samples.forEach(s => {
+                batch.set(window.db.collection("projects").doc(), {
+                    ...s, imageUrl: `https://placehold.co/600x400/1c2c54/white?text=${s.title.replace(' ','+')}`,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            });
+            batch.commit().then(() => { window.fetchProjects(); document.getElementById('loading-overlay').classList.add('hidden'); });
+        };
+    </script>
+</body>
+</html>
