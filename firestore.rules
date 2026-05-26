@@ -1,0 +1,58 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    function isValidProjectCreate() {
+      return request.resource.data.keys().hasOnly([
+        'title',
+        'location',
+        'category',
+        'imageUrl',
+        'imagePath',
+        'createdAt'
+      ])
+      && request.resource.data.title is string
+      && request.resource.data.title.size() >= 2
+      && request.resource.data.title.size() <= 120
+      && request.resource.data.location is string
+      && request.resource.data.location.size() >= 2
+      && request.resource.data.location.size() <= 120
+      && request.resource.data.category in ['Construction', 'Interior']
+      && request.resource.data.imageUrl is string
+      && request.resource.data.imageUrl.matches('https://.*')
+      && (!('imagePath' in request.resource.data) || request.resource.data.imagePath is string)
+      && request.resource.data.createdAt is timestamp;
+    }
+
+    function isValidProjectUpdate() {
+      return request.resource.data.diff(resource.data).changedKeys().hasOnly([
+        'title',
+        'location',
+        'category',
+        'imageUrl',
+        'imagePath',
+        'createdAt'
+      ])
+      && isValidProjectCreate();
+    }
+
+    match /projects/{projectId} {
+      allow read: if true;
+      allow create: if isAdmin() && isValidProjectCreate();
+      allow update: if isAdmin() && isValidProjectUpdate();
+      allow delete: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
