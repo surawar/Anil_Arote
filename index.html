@@ -929,7 +929,7 @@
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 22px;
+            padding: 24px;
         }
         .project-modal.open {
             display: flex;
@@ -937,28 +937,43 @@
         .project-modal-backdrop {
             position: absolute;
             inset: 0;
-            background: rgba(0, 0, 0, 0.72);
+            background: rgba(0, 0, 0, 0.86);
             backdrop-filter: blur(12px);
+            animation: modalFadeIn 0.28s var(--ease) both;
         }
         .project-modal-panel {
             position: relative;
             z-index: 1;
-            width: min(1040px, 100%);
-            max-height: min(88dvh, 860px);
+            width: min(1180px, 100%);
+            max-height: calc(100dvh - 48px);
             overflow: auto;
             border: 1px solid rgba(226, 33, 45, 0.26);
             border-radius: var(--radius-lg);
-            background: rgba(8, 18, 31, 0.94);
+            background: rgba(5, 10, 18, 0.96);
             box-shadow: 0 34px 110px rgba(0, 0, 0, 0.72);
+            animation: projectModalIn 0.34s var(--ease) both;
         }
         .project-modal-image {
-            height: min(62vh, 560px);
-            background: var(--bg-800);
+            min-height: min(72dvh, 720px);
+            max-height: calc(100dvh - 178px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(circle at center, rgba(255, 255, 255, 0.06), transparent 58%),
+                #02050a;
+            padding: 14px;
         }
         .project-modal-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: calc(100dvh - 206px);
+            object-fit: contain;
+            object-position: center;
+            border-radius: calc(var(--radius-lg) - 8px);
+            box-shadow: 0 18px 70px rgba(0, 0, 0, 0.42);
         }
         .project-modal-content {
             display: grid;
@@ -999,6 +1014,20 @@
         .project-modal-close:hover {
             background: linear-gradient(135deg, var(--gold), var(--amber));
             color: #ffffff;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes projectModalIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         /* ABOUT */
@@ -2073,7 +2102,17 @@
                 transform: translateY(0);
             }
             .project-modal { padding: 12px; }
-            .project-modal-image { height: clamp(280px, 50dvh, 440px); }
+            .project-modal-panel {
+                max-height: calc(100dvh - 24px);
+            }
+            .project-modal-image {
+                min-height: min(58dvh, 500px);
+                max-height: calc(100dvh - 170px);
+                padding: 10px;
+            }
+            .project-modal-image img {
+                max-height: calc(100dvh - 190px);
+            }
             .project-modal-content { padding: 18px; }
             .about-page { padding: 64px 18px 70px; }
             .about-lede { padding-left: 16px; }
@@ -2901,7 +2940,15 @@
                 border-radius: 16px;
             }
             .project-modal-image {
-                height: min(48dvh, 360px);
+                min-height: 0;
+                max-height: none;
+                padding: 8px;
+                overflow: auto;
+            }
+            .project-modal-image img {
+                width: 100%;
+                max-width: 100%;
+                max-height: none;
             }
             .project-modal-content {
                 padding: 16px;
@@ -3747,7 +3794,7 @@
                     <i class="fas fa-xmark"></i>
                 </button>
                 <div class="project-modal-image">
-                    <img id="project-modal-img" src="" alt="" width="1040" height="560" decoding="async">
+                    <img id="project-modal-img" src="" alt="" decoding="async" fetchpriority="high">
                 </div>
                 <div class="project-modal-content">
                     <div>
@@ -4354,8 +4401,13 @@
         const modalLocation = document.getElementById('project-modal-location');
         if (!modal || !modalImage || !modalTitle || !modalCategory || !modalLocation) return;
 
+        modalImage.removeAttribute('src');
         modalImage.src = project.imageUrl;
         modalImage.alt = project.title;
+        modalImage.onerror = () => {
+            modalImage.src = 'Logo_bg.png';
+            modalImage.alt = 'Anil Arote Associates project image unavailable';
+        };
         modalTitle.textContent = project.title;
         modalCategory.textContent = getProjectCategoryLabel(project.category);
         modalLocation.textContent = project.location;
