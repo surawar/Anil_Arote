@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://www.gstatic.com">
     <link rel="preload" as="image" href="Projects/image029.jpg">
     <link rel="icon" href="Logo.jpeg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -2142,6 +2142,906 @@
                 padding-top: 42px;
             }
         }
+        /* 2026 brand cleanup */
+        :root {
+            --brand-blue: #063f87;
+            --brand-blue-2: #0b63b6;
+            --brand-red: #b5121b;
+            --brand-red-2: #e2212d;
+            --light-gray: #f5f7fa;
+            --ink: #172033;
+            --body: #4d5b6f;
+            --surface: #ffffff;
+            --soft-shadow: 0 16px 38px rgba(6, 63, 135, 0.10);
+            --radius-md: 14px;
+            --radius-lg: 18px;
+        }
+        body { background: #ffffff; color: var(--body); }
+        h1, h2, h3, h4, .logo-text h1 { font-family: 'Poppins', sans-serif; color: var(--ink); }
+        a { color: var(--brand-blue); }
+        a:hover { color: var(--brand-red); }
+        .container { max-width: 1180px; }
+        .eyebrow { color: var(--brand-red); letter-spacing: 0.12em; }
+        .eyebrow::before { background: var(--brand-red); }
+        header.navbar {
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid rgba(6, 63, 135, 0.10);
+            box-shadow: 0 8px 28px rgba(15, 30, 55, 0.07);
+            backdrop-filter: blur(10px);
+        }
+        .logo img { border: 1px solid rgba(6, 63, 135, 0.14); box-shadow: none; }
+        .logo-text p, .footer-col p, .footer-col a, .footer-bottom { color: #4b5563; }
+        nav a { color: #253047; font-weight: 700; }
+        nav a:hover, nav a.active { color: var(--brand-blue); }
+        nav a::after { background: var(--brand-red); }
+        .premium-btn { border-radius: 12px; box-shadow: none; }
+        .premium-btn::after { display: none; }
+        .premium-btn.primary {
+            background: var(--brand-red);
+            color: #ffffff;
+            box-shadow: 0 12px 24px rgba(181, 18, 27, 0.18);
+        }
+        .premium-btn.primary:hover { background: var(--brand-blue); color: #ffffff; transform: translateY(-2px); }
+        .premium-btn.secondary {
+            background: #ffffff;
+            border: 1px solid rgba(6, 63, 135, 0.20);
+            color: var(--brand-blue);
+            backdrop-filter: none;
+        }
+        .premium-btn.secondary:hover { border-color: var(--brand-blue); background: #f7fbff; color: var(--brand-blue); }
+        .hero-page {
+            min-height: auto;
+            padding: 86px 20px 58px;
+            background:
+                linear-gradient(90deg, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.88) 46%, rgba(255,255,255,0.18) 100%),
+                url("Projects/image029.jpg") center/cover no-repeat;
+        }
+        .hero-layout {
+            max-width: 1180px;
+            grid-template-columns: minmax(0, 1.02fr) minmax(330px, 0.74fr);
+            gap: 44px;
+            align-items: center;
+        }
+        .hero-content h1 {
+            color: var(--brand-blue);
+            font-size: clamp(2.55rem, 6vw, 5.4rem);
+            line-height: 0.98;
+            text-transform: uppercase;
+            max-width: 760px;
+        }
+        .hero-content h1 .accent-line { display: block; color: var(--brand-red); }
+        .hero-content p { color: #3e4b60; max-width: 690px; }
+        .hero-actions {
+            margin-top: 28px;
+        }
+        .hero-trust span {
+            color: #344157;
+            background: #ffffff;
+            border: 1px solid rgba(6, 63, 135, 0.12);
+            box-shadow: 0 8px 22px rgba(6, 63, 135, 0.08);
+        }
+        .hero-panel, .info-card, .services-summary, .service-card, .portfolio-note, .project-card,
+        .about-card, .about-stat, .timeline-panel, .founder-card, .career-card, .career-role,
+        .career-apply, .contact-panel, .enquiry-panel, .map-panel, .contact-trust-note, .services-cta {
+            background: #ffffff;
+            border: 1px solid rgba(6, 63, 135, 0.12);
+            box-shadow: var(--soft-shadow);
+            backdrop-filter: none;
+        }
+        .hero-panel-header strong, .stat-card b, .info-card h3, .service-body h3,
+        .about-card h4, .timeline-panel h4, .founder-card h4, .career-card h3, .career-role h4,
+        .contact-panel h3, .enquiry-panel h3, .map-panel h3, .services-cta h3 { color: var(--ink); }
+        .hero-panel-header small, .stat-card span, .hero-recommendation, .info-card p, .service-body p,
+        .projects-intro p, .about-hero p, .about-section-head p, .about-card p, .timeline-panel p,
+        .career-card p, .career-role p, .contact-intro p, .contact-panel p, .enquiry-panel p, .map-panel p { color: var(--body); }
+        .services-intro p,
+        .career-hero p,
+        .career-section-head p,
+        .projects-intro p,
+        .about-hero p,
+        .about-section-head p,
+        .contact-intro p,
+        .services-summary span,
+        .portfolio-note span,
+        .contact-trust-note span {
+            color: #4b5563;
+        }
+        .stat-card, .about-lede, .career-note, .contact-meta > div {
+            background: var(--light-gray);
+            border: 1px solid rgba(6, 63, 135, 0.10);
+        }
+        .home-feature-band, .services-page, .projects-page, .about-page, .career-page, .contact-page {
+            background: #ffffff;
+            padding-top: 82px;
+        }
+        .services-page, .about-page, .contact-page { background: linear-gradient(180deg, #ffffff 0%, var(--light-gray) 100%); }
+        .services-intro h2, .projects-intro h2, .about-hero h2, .contact-intro h2, .career-hero h2 {
+            color: var(--brand-blue);
+            font-size: clamp(2rem, 4vw, 3.55rem);
+            line-height: 1.08;
+        }
+        .service-card { min-height: 320px; transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease); }
+        .service-card:hover, .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(11, 99, 182, 0.28);
+            box-shadow: 0 20px 44px rgba(6, 63, 135, 0.14);
+        }
+        .service-icon, .about-icon, .career-card i, .career-role i, .contact-card i {
+            background: rgba(6, 63, 135, 0.08);
+            color: var(--brand-blue);
+        }
+        .service-index, .project-badge, .timeline-panel strong {
+            color: var(--brand-red);
+            background: rgba(226, 33, 45, 0.08);
+            border-color: rgba(226, 33, 45, 0.16);
+        }
+        .project-filters {
+            background: #ffffff;
+            border: 1px solid rgba(6, 63, 135, 0.10);
+            box-shadow: 0 10px 28px rgba(6, 63, 135, 0.07);
+            padding: 8px;
+            border-radius: 16px;
+        }
+        .project-filter { background: transparent; color: #354258; border: 0; }
+        .project-filter.active, .project-filter:hover { background: var(--brand-blue); color: #ffffff; }
+        .project-card { min-height: 390px; overflow: hidden; }
+        .project-media img { transition: transform 0.45s var(--ease); }
+        .project-card:hover .project-media img { transform: scale(1.045); }
+        .project-overlay { background: linear-gradient(180deg, rgba(6,63,135,0.02), rgba(6,63,135,0.74)); }
+        .project-content, .project-content h3, .project-location { color: #ffffff; }
+        .project-showcase, .interior-showcase { padding: 82px 20px; background: var(--light-gray); }
+        .showcase-head { max-width: 760px; margin: 0 auto 32px; text-align: center; }
+        .showcase-head h2 {
+            color: var(--brand-blue);
+            font-size: clamp(1.9rem, 4vw, 3.1rem);
+            line-height: 1.08;
+            margin-top: 10px;
+        }
+        .showcase-head p { color: var(--body); margin-top: 12px; }
+        .home-project-grid, .interior-grid {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 18px;
+        }
+        .home-project-card, .interior-card {
+            position: relative;
+            min-height: 310px;
+            grid-column: span 4;
+            overflow: hidden;
+            border-radius: 18px;
+            background: #ffffff;
+            border: 1px solid rgba(6, 63, 135, 0.10);
+            box-shadow: var(--soft-shadow);
+        }
+        .home-project-card:first-child, .interior-card:first-child { grid-column: span 6; min-height: 420px; }
+        .home-project-card img, .interior-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.45s var(--ease);
+        }
+        .home-project-card:hover img, .interior-card:hover img { transform: scale(1.04); }
+        .showcase-caption {
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            bottom: 18px;
+            padding: 14px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.94);
+            color: var(--ink);
+            box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+        }
+        .showcase-caption strong { display: block; font-family: 'Poppins', sans-serif; color: var(--brand-blue); }
+        .showcase-caption span { display: block; color: var(--body); font-size: 0.9rem; margin-top: 2px; }
+        .site-footer {
+            background: #f8fafc;
+            border-top: 1px solid rgba(6, 63, 135, 0.14);
+            color: #1f2937;
+        }
+        .footer-shell {
+            align-items: start;
+            gap: 34px;
+            padding-top: 52px;
+            padding-bottom: 38px;
+        }
+        .footer-col h3, .footer-col h4 {
+            color: var(--brand-blue);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 14px;
+        }
+        .footer-brand strong {
+            color: var(--brand-blue);
+            font-family: 'Poppins', sans-serif;
+        }
+        .footer-brand span,
+        .footer-col p {
+            color: #4b5563;
+        }
+        .footer-col a {
+            color: #1f2937;
+            font-weight: 600;
+        }
+        .footer-col a:hover {
+            color: var(--brand-red);
+            transform: translateX(2px);
+        }
+        .footer-social a {
+            background: rgba(6, 63, 135, 0.08);
+            border-color: rgba(6, 63, 135, 0.12);
+            color: var(--brand-blue);
+        }
+        .footer-social a:hover { background: var(--brand-red); color: #ffffff; }
+        .social-proof {
+            padding: 72px 20px;
+            background: #ffffff;
+        }
+        .social-proof-shell {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr);
+            gap: 30px;
+            align-items: center;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid rgba(6, 63, 135, 0.12);
+            background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+            box-shadow: var(--soft-shadow);
+        }
+        .social-proof h2 {
+            color: var(--brand-blue);
+            font-size: clamp(1.7rem, 3vw, 2.6rem);
+            line-height: 1.12;
+            margin-top: 10px;
+        }
+        .social-proof p {
+            color: #4b5563;
+            max-width: 620px;
+            margin-top: 12px;
+        }
+        .social-actions,
+        .contact-social-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+        .social-card,
+        .contact-social-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 64px;
+            padding: 14px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 1px solid rgba(6, 63, 135, 0.12);
+            color: #1f2937;
+            box-shadow: 0 10px 24px rgba(6, 63, 135, 0.07);
+        }
+        .social-card i,
+        .contact-social-card i {
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(6, 63, 135, 0.08);
+            color: var(--brand-blue);
+            flex: 0 0 auto;
+        }
+        .social-card strong,
+        .contact-social-card strong {
+            display: block;
+            color: #1f2937;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+        }
+        .social-card span,
+        .contact-social-card span span {
+            display: block;
+            color: #4b5563;
+            font-size: 0.84rem;
+            line-height: 1.35;
+        }
+        .social-card:hover,
+        .contact-social-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(11, 99, 182, 0.28);
+            box-shadow: 0 16px 34px rgba(6, 63, 135, 0.12);
+            color: #1f2937;
+        }
+        .social-card:hover i,
+        .contact-social-card:hover i {
+            background: var(--brand-blue);
+            color: #ffffff;
+        }
+        .contact-follow {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(6, 63, 135, 0.12);
+        }
+        .contact-follow h4 {
+            color: var(--brand-blue);
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .contact-social-grid {
+            grid-template-columns: 1fr;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(6, 63, 135, 0.12);
+            color: #4b5563;
+            background: #ffffff;
+        }
+        .whatsapp-float { background: #25d366; box-shadow: 0 14px 30px rgba(37, 211, 102, 0.28); }
+        .back-to-top { background: var(--brand-blue); box-shadow: 0 14px 30px rgba(6, 63, 135, 0.24); }
+        .contact-card {
+            background: #ffffff;
+            border: 1px solid rgba(6, 63, 135, 0.12);
+            color: var(--ink);
+        }
+        .contact-card span span { color: var(--brand-blue); }
+        .premium-form input, .premium-form textarea {
+            background: #ffffff;
+            border: 1px solid rgba(6, 63, 135, 0.18);
+            color: var(--ink);
+        }
+        .premium-form input::placeholder,
+        .premium-form textarea::placeholder {
+            color: #6b7280;
+        }
+        .premium-form label { color: var(--ink); }
+        .info-card .text-gray-300,
+        .services-cta p,
+        .career-apply p,
+        .career-apply li,
+        .contact-meta span,
+        .contact-status,
+        .project-empty,
+        .project-error,
+        .portfolio-note span,
+        .contact-trust-note span,
+        .services-summary span,
+        .about-note,
+        .founder-card p {
+            color: #4b5563 !important;
+        }
+        .info-card a,
+        .service-link,
+        .footer-col a,
+        .contact-card {
+            text-decoration: none;
+        }
+        .service-link {
+            color: var(--brand-blue);
+            background: rgba(6, 63, 135, 0.08);
+            border-color: rgba(6, 63, 135, 0.14);
+        }
+        .service-link:hover {
+            color: #ffffff;
+            background: var(--brand-blue);
+            border-color: var(--brand-blue);
+        }
+        .project-modal-panel,
+        .project-modal-content {
+            background: #ffffff;
+            color: #1f2937;
+        }
+        .project-modal-content h3,
+        .project-modal-meta,
+        .project-modal-meta span {
+            color: #1f2937;
+        }
+        .contact-card strong,
+        .contact-meta strong {
+            color: #1f2937;
+        }
+        .contact-card:hover {
+            background: #f7fbff;
+            color: #1f2937;
+            border-color: rgba(11, 99, 182, 0.28);
+        }
+        .contact-card:hover strong,
+        .contact-card:hover span,
+        .contact-card:hover span span {
+            color: #1f2937;
+        }
+        .contact-card:hover i {
+            color: var(--brand-blue);
+        }
+        .about-visual-card {
+            background: #ffffff;
+            color: #1f2937;
+            border: 1px solid rgba(6, 63, 135, 0.12);
+            box-shadow: var(--soft-shadow);
+        }
+        .about-visual-card strong {
+            color: var(--brand-blue);
+        }
+        .about-visual-card span {
+            color: #4b5563;
+        }
+        .home-feature-band,
+        .services-page,
+        .about-page,
+        .projects-page,
+        .career-page,
+        .contact-page,
+        .project-showcase,
+        .interior-showcase,
+        .social-proof {
+            color: #4b5563;
+        }
+        .home-feature-band h1,
+        .home-feature-band h2,
+        .home-feature-band h3,
+        .services-page h1,
+        .services-page h2,
+        .services-page h3,
+        .services-page h4,
+        .about-page h1,
+        .about-page h2,
+        .about-page h3,
+        .about-page h4,
+        .projects-page h1,
+        .projects-page h2,
+        .projects-page h3,
+        .career-page h1,
+        .career-page h2,
+        .career-page h3,
+        .career-page h4,
+        .contact-page h1,
+        .contact-page h2,
+        .contact-page h3 {
+            color: #1f2937;
+        }
+        .services-intro h2,
+        .projects-intro h2,
+        .about-hero h2,
+        .contact-intro h2,
+        .career-hero h2,
+        .showcase-head h2 {
+            color: var(--brand-blue);
+        }
+        .field-error {
+            color: var(--brand-red);
+        }
+        .field-group.invalid input,
+        .field-group.invalid textarea {
+            border-color: var(--brand-red);
+            background: #fff7f7;
+        }
+        .premium-btn.primary,
+        .premium-btn.primary *,
+        .service-link:hover,
+        .service-link:hover *,
+        .project-filter.active,
+        .project-filter.active *,
+        .project-filter:hover,
+        .project-filter:hover *,
+        .footer-social a:hover,
+        .footer-social a:hover * {
+            color: #ffffff;
+        }
+        .project-content,
+        .project-content *,
+        .project-open,
+        .project-open * {
+            color: #ffffff !important;
+        }
+        .project-modal-content .project-badge,
+        .project-modal-content .project-badge * {
+            color: var(--brand-red);
+        }
+        .about-lede,
+        .career-note,
+        .services-summary,
+        .portfolio-note,
+        .contact-trust-note {
+            background: #f5f7fa !important;
+            border: 1px solid rgba(6, 63, 135, 0.12) !important;
+            box-shadow: none !important;
+        }
+        .about-lede,
+        .career-note span,
+        .services-summary span,
+        .portfolio-note span,
+        .contact-trust-note span,
+        .hero-recommendation {
+            color: #4b5563 !important;
+        }
+        .career-note strong,
+        .services-summary strong,
+        .portfolio-note strong,
+        .contact-trust-note strong,
+        .hero-recommendation strong {
+            color: #063f87 !important;
+        }
+        .service-body p,
+        .about-card p,
+        .career-card p,
+        .career-role p,
+        .timeline-panel p,
+        .founder-card p,
+        .info-card p {
+            color: #4b5563 !important;
+            line-height: 1.6;
+        }
+        .about-card h4,
+        .service-body h3,
+        .career-card h3,
+        .career-role h4 {
+            color: #1f2937 !important;
+        }
+        .nav-toggle {
+            color: var(--brand-blue);
+            background: rgba(6, 63, 135, 0.08);
+            border-color: rgba(6, 63, 135, 0.16);
+        }
+        @media (max-width: 900px) {
+            #main-nav {
+                background: #ffffff;
+                border-color: rgba(6, 63, 135, 0.12);
+                box-shadow: 0 18px 40px rgba(15, 30, 55, 0.16);
+                backdrop-filter: none;
+            }
+            .hero-page {
+                background:
+                    linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.90)),
+                    url("Projects/image029.jpg") center/cover no-repeat;
+                padding-top: 62px;
+            }
+            .hero-layout { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: clamp(2.35rem, 11vw, 4.2rem); }
+            .home-project-card, .interior-card, .home-project-card:first-child, .interior-card:first-child {
+                grid-column: span 6;
+                min-height: 330px;
+            }
+            .social-proof-shell {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
+            .social-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 560px) {
+            .home-project-card, .interior-card, .home-project-card:first-child, .interior-card:first-child {
+                grid-column: 1 / -1;
+                min-height: 310px;
+            }
+            .showcase-caption { left: 12px; right: 12px; bottom: 12px; }
+        }
+
+        /* Final mobile QA pass */
+        html,
+        body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        p,
+        a,
+        button,
+        input,
+        textarea,
+        h1,
+        h2,
+        h3,
+        h4,
+        span {
+            overflow-wrap: anywhere;
+        }
+        input,
+        textarea,
+        select,
+        button {
+            font: inherit;
+        }
+        @media (hover: none) {
+            .service-card:hover,
+            .project-card:hover,
+            .about-card:hover,
+            .home-project-card:hover img,
+            .interior-card:hover img {
+                transform: none;
+            }
+        }
+        @media (max-width: 900px) {
+            header.navbar {
+                min-height: 64px;
+                padding: 10px 16px;
+            }
+            .logo {
+                max-width: calc(100% - 58px);
+            }
+            .logo-text h1 {
+                max-width: 210px;
+                white-space: normal;
+                overflow-wrap: normal;
+            }
+            .nav-toggle {
+                display: inline-flex;
+                width: 48px;
+                height: 48px;
+                min-width: 48px;
+                align-items: center;
+                justify-content: center;
+                border-radius: 12px;
+            }
+            #main-nav {
+                top: 72px;
+                left: 12px;
+                right: 12px;
+                max-height: calc(100dvh - 92px);
+                overflow-y: auto;
+                padding: 10px;
+                border-radius: 16px;
+            }
+            #main-nav a {
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                padding: 12px 14px;
+                border-radius: 12px;
+                color: #1f2937;
+            }
+            #main-nav a.active,
+            #main-nav a:hover {
+                background: rgba(6, 63, 135, 0.08);
+                color: var(--brand-blue);
+            }
+            .hero-page {
+                padding: 44px 16px 34px;
+            }
+            .hero-layout {
+                gap: 20px;
+            }
+            .hero-content h1 {
+                font-size: clamp(2rem, 10vw, 3.3rem);
+                line-height: 1.02;
+                margin: 12px 0 14px;
+            }
+            .hero-content p {
+                font-size: 0.98rem;
+                line-height: 1.62;
+            }
+            .hero-actions {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-top: 22px;
+            }
+            .premium-btn,
+            .service-link,
+            .project-filter,
+            .contact-card,
+            .social-card,
+            .contact-social-card {
+                min-height: 48px;
+            }
+            .hero-panel {
+                padding: 16px;
+            }
+            .hero-stats {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 10px;
+            }
+            .stat-card {
+                padding: 12px;
+            }
+            .stat-card b {
+                font-size: 1rem;
+            }
+            .stat-card span {
+                font-size: 0.82rem;
+                line-height: 1.35;
+            }
+            .home-feature-band,
+            .project-showcase,
+            .interior-showcase,
+            .social-proof,
+            .services-page,
+            .projects-page,
+            .about-page,
+            .career-page,
+            .contact-page {
+                padding: 56px 16px;
+            }
+            .services-intro h2,
+            .projects-intro h2,
+            .about-hero h2,
+            .contact-intro h2,
+            .career-hero h2,
+            .showcase-head h2 {
+                font-size: clamp(1.85rem, 8vw, 2.65rem);
+                line-height: 1.12;
+            }
+            .services-grid,
+            .projects-grid,
+            .about-grid,
+            .career-grid,
+            .career-role-grid,
+            .home-project-grid,
+            .interior-grid {
+                gap: 14px;
+            }
+            .service-card,
+            .about-card,
+            .about-principles .about-card,
+            .career-card,
+            .career-role {
+                grid-column: 1 / -1;
+                min-height: auto;
+                padding: 18px;
+            }
+            .project-filters {
+                grid-template-columns: 1fr;
+                gap: 8px;
+                margin-bottom: 18px;
+            }
+            .project-card,
+            .project-card.featured,
+            .project-skeleton {
+                grid-column: 1 / -1;
+                min-height: 340px;
+            }
+            .project-content {
+                padding: 18px;
+            }
+            .project-content h3 {
+                font-size: 1.08rem;
+                line-height: 1.25;
+            }
+            .project-modal {
+                padding: 10px;
+                align-items: center;
+            }
+            .project-modal-panel {
+                max-height: calc(100dvh - 20px);
+                border-radius: 16px;
+            }
+            .project-modal-image {
+                height: min(48dvh, 360px);
+            }
+            .project-modal-content {
+                padding: 16px;
+            }
+            .project-modal-close {
+                top: 10px;
+                right: 10px;
+                width: 46px;
+                height: 46px;
+            }
+            .contact-layout,
+            .contact-intro,
+            .form-grid,
+            .contact-meta,
+            .career-hero,
+            .career-apply,
+            .about-hero,
+            .about-section-head,
+            .projects-intro,
+            .services-intro {
+                grid-template-columns: 1fr;
+            }
+            .contact-panel,
+            .enquiry-panel,
+            .map-panel,
+            .services-cta,
+            .career-apply,
+            .social-proof-shell {
+                padding: 18px;
+            }
+            .premium-form input,
+            .premium-form textarea {
+                width: 100%;
+                min-height: 48px;
+                font-size: 16px;
+            }
+            .premium-form textarea {
+                min-height: 132px;
+            }
+            .map-frame {
+                height: 300px;
+            }
+            .footer-shell {
+                grid-template-columns: 1fr 1fr;
+                gap: 24px;
+                padding: 42px 16px 28px;
+            }
+            .footer-brand {
+                align-items: flex-start;
+            }
+            .footer-social {
+                flex-wrap: wrap;
+            }
+            .footer-social a {
+                width: 44px;
+                height: 44px;
+            }
+            .whatsapp-float,
+            .back-to-top {
+                right: 14px;
+                width: 48px;
+                height: 48px;
+            }
+            .whatsapp-float {
+                bottom: 78px;
+            }
+            .back-to-top {
+                bottom: 18px;
+            }
+        }
+        @media (max-width: 560px) {
+            .container {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            header.navbar {
+                padding: 9px 12px;
+            }
+            .logo-text h1 {
+                max-width: 170px;
+                font-size: 0.8rem;
+                line-height: 1.2;
+            }
+            .hero-page {
+                padding: 38px 14px 30px;
+            }
+            .hero-content h1 {
+                font-size: clamp(1.85rem, 11vw, 2.85rem);
+            }
+            .hero-content p {
+                font-size: 0.94rem;
+            }
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            .hero-panel-header {
+                align-items: flex-start;
+            }
+            .hero-panel-header img {
+                width: 46px;
+                height: 46px;
+            }
+            .home-feature-band,
+            .project-showcase,
+            .interior-showcase,
+            .social-proof,
+            .services-page,
+            .projects-page,
+            .about-page,
+            .career-page,
+            .contact-page {
+                padding: 46px 14px;
+            }
+            .showcase-head {
+                margin-bottom: 22px;
+            }
+            .home-project-card,
+            .interior-card,
+            .home-project-card:first-child,
+            .interior-card:first-child,
+            .project-card,
+            .project-card.featured {
+                min-height: 300px;
+            }
+            .showcase-caption {
+                padding: 12px;
+            }
+            .contact-card,
+            .social-card,
+            .contact-social-card {
+                align-items: flex-start;
+            }
+            .footer-shell {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+            .footer-bottom {
+                padding: 16px 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2184,9 +3084,9 @@
             </div>
             <p>Civil construction, architecture, structural engineering, interiors, and turnkey execution for clients who value reliable delivery and clear coordination.</p>
             <div class="footer-social" aria-label="Social media links">
-                <a href="javascript:void(0)" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="javascript:void(0)" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="javascript:void(0)" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com/p/Anil-Arote-Consultant-100091550651993/" target="_blank" rel="noopener noreferrer" aria-label="Follow Anil Arote Associates on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/anil_arote_associates/" target="_blank" rel="noopener noreferrer" aria-label="Follow Anil Arote Associates on Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/anil-arote-23b0b4171/" target="_blank" rel="noopener noreferrer" aria-label="Connect with Anil Arote Associates on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="footer-col">
@@ -2194,7 +3094,7 @@
             <a href="javascript:void(0)" onclick="renderPage('home')">Home</a>
             <a href="javascript:void(0)" onclick="renderPage('about')">About Us</a>
             <a href="javascript:void(0)" onclick="renderPage('services')">Services</a>
-            <a href="javascript:void(0)" onclick="renderPage('expertise')">Career</a>
+            <a href="javascript:void(0)" onclick="renderPage('expertise')">Careers</a>
             <a href="javascript:void(0)" onclick="renderPage('projects')">Projects</a>
             <a href="javascript:void(0)" onclick="renderPage('contact')">Contact</a>
         </div>
@@ -2208,8 +3108,8 @@
         </div>
         <div class="footer-col">
             <h3>Contact</h3>
-            <a href="tel:08857820207"><i class="fas fa-phone mr-2"></i>08857820207</a>
-            <a href="mailto:info@anilaroteassociates.com"><i class="fas fa-envelope mr-2"></i>info@anilaroteassociates.com</a>
+            <a href="tel:8857820207"><i class="fas fa-phone mr-2"></i>Phone: 8857820207</a>
+            <a href="mailto:anilaroteassociates@gmail.com"><i class="fas fa-envelope mr-2"></i>Email: anilaroteassociates@gmail.com</a>
             <p>Shop No.1, House No. 24, Near Premnagar, Jain Mandir Road, Taroda (Kh), Nanded, MH 431602</p>
         </div>
     </div>
@@ -2218,7 +3118,7 @@
     </div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/918857820207?text=Hello%20Anil%20Arote%20Associates%2C%20I%20want%20to%20discuss%20a%20construction%20project." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+<a class="whatsapp-float" href="https://wa.me/918857820207?text=Hello%20Anil%20Arote%20Associates%2C%20I%20want%20to%20discuss%20a%20construction%20project." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
     <i class="fab fa-whatsapp"></i>
 </a>
 <button class="back-to-top" id="back-to-top" type="button" aria-label="Back to top">
@@ -2230,25 +3130,20 @@
         <div class="hero-layout">
             <div class="hero-content">
                 <span class="eyebrow">Construction | Interiors | Engineering</span>
-                <h1>Reliable construction backed by structural engineering.</h1>
-                <p>Anil Arote Associates handles civil construction, structural planning, architectural drawings, interiors, and turnkey execution through one accountable team.</p>
+                <h1>We Design <span>We Build</span> <span class="accent-line">We Deliver Quality</span></h1>
+                <p>Anil Arote Associates provides civil construction, structural planning, architectural drawings, interiors, and turnkey execution through one experienced engineering team.</p>
 
                 <div class="hero-actions">
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="premium-btn primary">
-                        <span>Start Your Project</span>
+                        <span>Get Consultation</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                     <a href="javascript:void(0)" onclick="renderPage('projects')" class="premium-btn secondary">
                         <i class="fas fa-layer-group"></i>
-                        <span>View Portfolio</span>
+                        <span>View Projects</span>
                     </a>
                 </div>
 
-                <div class="hero-trust" aria-label="Trust indicators">
-                    <span><i class="fas fa-shield-halved"></i> RCC and structural planning</span>
-                    <span><i class="fas fa-compass-drafting"></i> Architecture to execution</span>
-                    <span><i class="fas fa-location-dot"></i> Nanded, Maharashtra</span>
-                </div>
             </div>
 
             <aside class="hero-panel" aria-label="Company performance highlights">
@@ -2261,23 +3156,23 @@
                 </div>
                 <div class="hero-stats">
                     <div class="stat-card">
-                        <b>12+</b>
-                        <span>construction and interior service verticals</span>
+                        <b>Plan</b>
+                        <span>practical drawings, layouts, and project direction</span>
                     </div>
                     <div class="stat-card">
-                        <b>360</b>
-                        <span>degree planning, design, and site delivery</span>
+                        <b>Design</b>
+                        <span>structural, architectural, and interior guidance</span>
                     </div>
                     <div class="stat-card">
-                        <b>1</b>
-                        <span>single accountable partner from concept to handover</span>
+                        <b>Build</b>
+                        <span>site execution with supervision and quality focus</span>
                     </div>
                     <div class="stat-card">
-                        <b>100%</b>
-                        <span>focus on durability, detailing, and client trust</span>
+                        <b>Deliver</b>
+                        <span>completed spaces prepared for long-term use</span>
                     </div>
                 </div>
-                <p class="hero-recommendation"><strong>Project Coordination</strong> Site planning, RCC guidance, material coordination, supervision, interiors, and handover are managed with clear responsibility.</p>
+                <p class="hero-recommendation"><strong>End-to-End Project Management</strong> Planning, engineering, site work, and finishing handled with clear supervision.</p>
             </aside>
         </div>
     </section>
@@ -2287,19 +3182,19 @@
             <div class="info-card">
                 <i class="fas fa-building-shield text-4xl text-[#e2212d] mb-3"></i>
                 <h3 class="text-xl font-bold mb-2">Single-Point Delivery</h3>
-                <p class="text-sm text-gray-300">Structural engineering, drawings, approvals, construction, interiors, and site execution coordinated under one firm.</p>
+                <p class="text-sm">Structural engineering, drawings, approvals, construction, interiors, and site execution coordinated under one firm.</p>
                 <a href="javascript:void(0)" onclick="renderPage('about')" class="text-[#e2212d] hover:text-[#6fb0f2] mt-3 inline-block font-semibold text-sm">Our Company <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
             <div class="info-card">
                 <i class="fas fa-compass-drafting text-4xl text-[#e2212d] mb-3"></i>
                 <h3 class="text-xl font-bold mb-2">Core Services</h3>
-                <p class="text-sm text-gray-300">Civil construction, RCC structural planning, architectural documentation, and approval-ready project support.</p>
+                <p class="text-sm">Civil construction, RCC structural planning, architectural documentation, and approval-ready project support.</p>
                 <a href="javascript:void(0)" onclick="renderPage('services')" class="text-[#e2212d] hover:text-[#6fb0f2] mt-3 inline-block font-semibold text-sm">View Services <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
             <div class="info-card">
                 <i class="fas fa-helmet-safety text-4xl text-[#e2212d] mb-3"></i>
                 <h3 class="text-xl font-bold mb-2">Built Portfolio</h3>
-                <p class="text-sm text-gray-300">Residential, commercial, office, bank interior, renovation, and turnkey project work across practical site conditions.</p>
+                <p class="text-sm">Residential, commercial, office, bank interior, renovation, and turnkey project work across practical site conditions.</p>
                 <a href="javascript:void(0)" onclick="renderPage('projects')" class="text-[#e2212d] hover:text-[#6fb0f2] mt-3 inline-block font-semibold text-sm">See Projects <i class="fas fa-arrow-right ml-1"></i></a>
             </div>
         </div>
@@ -2314,9 +3209,9 @@
                 <div class="reveal-on-scroll">
                     <span class="eyebrow">About Anil Arote Associates</span>
                     <h2>Built on engineering discipline and client trust.</h2>
-                    <p>Anil Arote Associates is a construction, architecture, structural engineering, and interior solutions firm focused on reliable execution for residential, commercial, office, bank, and turnkey projects.</p>
-                    <div class="about-lede">We bring structural clarity, site control, material coordination, and finishing discipline into one practical process, so clients get dependable project execution without fragmented responsibility.</div>
-                    <p class="about-note">The portfolio imagery reflects completed and proposed project work, keeping the presentation grounded in practical construction experience.</p>
+                <p>Anil Arote Associates offers construction, architecture, structural engineering, and interior solutions for residential and commercial projects.</p>
+                    <div class="about-lede">The team brings structural clarity, site control, material coordination, and finishing discipline into each project, helping clients make confident construction decisions.</div>
+                    <p class="about-note">The work is guided by practical site experience, clear communication, and attention to long-term durability.</p>
                 </div>
 
                 <div class="about-visual reveal-on-scroll" style="--delay: 90ms;">
@@ -2330,37 +3225,10 @@
 
             <div class="about-section-head">
                 <div>
-                    <span class="eyebrow">Achievements</span>
-                    <h3>Capability built through site work.</h3>
-                </div>
-                <p>Project experience across construction, interiors, planning, and site coordination helps clients understand the firm's working capacity.</p>
-            </div>
-
-            <div class="about-stats" aria-label="Company achievements">
-                <div class="about-stat reveal-on-scroll" style="--delay: 0ms;">
-                    <strong><span class="count-up" data-count="75">0</span><small>+</small></strong>
-                    <span>Projects completed across construction and interiors</span>
-                </div>
-                <div class="about-stat reveal-on-scroll" style="--delay: 70ms;">
-                    <strong><span class="count-up" data-count="10">0</span><small>+</small></strong>
-                    <span>Years of practical design and execution experience</span>
-                </div>
-                <div class="about-stat reveal-on-scroll" style="--delay: 140ms;">
-                    <strong><span class="count-up" data-count="60">0</span><small>+</small></strong>
-                    <span>Clients served with accountable project guidance</span>
-                </div>
-                <div class="about-stat reveal-on-scroll" style="--delay: 210ms;">
-                    <strong><span class="count-up" data-count="12">0</span><small>+</small></strong>
-                    <span>Active service capabilities under one firm</span>
-                </div>
-            </div>
-
-            <div class="about-section-head">
-                <div>
                     <span class="eyebrow">Why Choose Us</span>
-                    <h3>Trust is engineered into the process.</h3>
+                    <h3>Trust is built through disciplined work.</h3>
                 </div>
-                <p>Every decision is shaped around durability, clear coordination, practical detailing, and disciplined on-site execution.</p>
+                <p>Clients trust the team for practical drawings, durable work, clear communication, and regular site supervision.</p>
             </div>
 
             <div class="about-grid">
@@ -2372,7 +3240,7 @@
                 <article class="about-card reveal-on-scroll" style="--delay: 60ms;">
                     <span class="about-icon" aria-hidden="true"><i class="fas fa-users-gear"></i></span>
                     <h4>Experienced Team</h4>
-                    <p>Architecture, engineering, interiors, and site execution are handled with practical experience and coordinated decision-making.</p>
+                    <p>Design, engineering, interiors, and site work are handled by one experienced team.</p>
                 </article>
                 <article class="about-card reveal-on-scroll" style="--delay: 120ms;">
                     <span class="about-icon" aria-hidden="true"><i class="fas fa-clock"></i></span>
@@ -2382,17 +3250,17 @@
                 <article class="about-card reveal-on-scroll" style="--delay: 180ms;">
                     <span class="about-icon" aria-hidden="true"><i class="fas fa-gem"></i></span>
                     <h4>Specified Materials</h4>
-                    <p>Material choices are guided by durability, finish quality, maintenance needs, and the intended value of the property.</p>
+                    <p>Materials are selected for durability, finish quality, and maintenance needs.</p>
                 </article>
                 <article class="about-card reveal-on-scroll" style="--delay: 240ms;">
                     <span class="about-icon" aria-hidden="true"><i class="fas fa-file-signature"></i></span>
                     <h4>Transparent Execution</h4>
-                    <p>Clients get a clearer view of scope, design decisions, construction progress, and execution priorities throughout the work.</p>
+                    <p>Clients receive clear updates on scope, progress, and site priorities.</p>
                 </article>
                 <article class="about-card reveal-on-scroll" style="--delay: 300ms;">
                     <span class="about-icon" aria-hidden="true"><i class="fas fa-key"></i></span>
                     <h4>End-to-End Solutions</h4>
-                    <p>From planning and structural design to construction, interiors, and handover, one team coordinates the project path.</p>
+                    <p>Planning, design, construction, interiors, and handover are coordinated together.</p>
                 </article>
             </div>
 
@@ -2427,7 +3295,7 @@
                     <span class="eyebrow">Journey</span>
                     <h3>A company built through execution.</h3>
                 </div>
-                <p>The timeline below is structured for trust-building and can be updated with exact founding dates and verified milestones.</p>
+                <p>The company has grown through practical project work, client referrals, and steady expansion into construction and interior services.</p>
             </div>
 
             <div class="about-timeline">
@@ -2460,7 +3328,7 @@
                     <div class="timeline-panel">
                         <strong>Today</strong>
                         <h4>Integrated turnkey project partner</h4>
-                        <p>Anil Arote Associates now positions itself as a single accountable partner for planning, engineering, construction, interiors, and supervision.</p>
+                        <p>Anil Arote Associates now supports clients with planning, engineering, construction, interiors, and supervision under one coordinated team.</p>
                     </div>
                 </div>
             </div>
@@ -2468,7 +3336,7 @@
             <div class="about-section-head">
                 <div>
                     <span class="eyebrow">Leadership</span>
-                    <h3>Guided by accountable professionals.</h3>
+                    <h3>Guided by experienced professionals.</h3>
                 </div>
                 <p>Leadership visibility builds confidence for clients making high-value construction and interior decisions.</p>
             </div>
@@ -2491,6 +3359,78 @@
             </div>
         </div>
     </section>
+
+    <section class="project-showcase">
+        <div class="container">
+            <div class="showcase-head">
+                <span class="eyebrow">Featured Projects</span>
+                <h2>Completed construction work with real project visuals.</h2>
+                <p>Our portfolio showcases residential, commercial, and interior projects delivered with quality, precision, and practical site experience.</p>
+            </div>
+            <div class="home-project-grid">
+                <a class="home-project-card" href="javascript:void(0)" onclick="renderPage('projects')">
+                    <img src="Projects/Digambar_Markante__Vishalnagar_Nanded.jpg" alt="Completed project in Vishalnagar Nanded" loading="lazy" decoding="async">
+                    <span class="showcase-caption"><strong>Residential Construction</strong><span>Vishalnagar, Nanded</span></span>
+                </a>
+                <a class="home-project-card" href="javascript:void(0)" onclick="renderPage('projects')">
+                    <img src="Projects/Arun_Shete_Sangli.jpg" alt="Completed project in Sangli" loading="lazy" decoding="async">
+                    <span class="showcase-caption"><strong>Client Project</strong><span>Sangli</span></span>
+                </a>
+                <a class="home-project-card" href="javascript:void(0)" onclick="renderPage('projects')">
+                    <img src="Projects/Mahesh_Agave__Malkapur_Nanded.jpg" alt="Completed project in Malkapur Nanded" loading="lazy" decoding="async">
+                    <span class="showcase-caption"><strong>Site Execution</strong><span>Malkapur, Nanded</span></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="interior-showcase">
+        <div class="container">
+            <div class="showcase-head">
+                <span class="eyebrow">Interior Work</span>
+                <h2>Premium interior execution for homes, offices, and customer spaces.</h2>
+                <p>Explore refined interior work shaped around comfort, finish quality, storage, lighting, and everyday usability.</p>
+            </div>
+            <div class="interior-grid">
+                <a class="interior-card" href="javascript:void(0)" onclick="renderPage('projects')">
+                    <img src="interior/IMG-20240902-WA0143.jpg" alt="Premium interior work by Anil Arote Associates" loading="lazy" decoding="async">
+                    <span class="showcase-caption"><strong>Interior Finish</strong><span>Elegant material and lighting coordination</span></span>
+                </a>
+                <a class="interior-card" href="javascript:void(0)" onclick="renderPage('projects')">
+                    <img src="interior/IMG-20240816-WA0039.jpg" alt="Interior design showcase" loading="lazy" decoding="async">
+                    <span class="showcase-caption"><strong>Design Detail</strong><span>Clean execution and functional planning</span></span>
+                </a>
+                <a class="interior-card" href="javascript:void(0)" onclick="renderPage('projects')">
+                    <img src="interior/IMG-20240902-WA0142.jpg" alt="Interior project image" loading="lazy" decoding="async">
+                    <span class="showcase-caption"><strong>Modern Interior</strong><span>Refined finish for practical daily use</span></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="social-proof">
+        <div class="container social-proof-shell">
+            <div>
+                <span class="eyebrow">Follow Our Work</span>
+                <h2>Connect With Anil Arote Associates</h2>
+                <p>Follow project updates, interiors, and site progress through the official profiles.</p>
+            </div>
+            <div class="social-actions" aria-label="Official social media profiles">
+                <a class="social-card" href="https://www.instagram.com/anil_arote_associates/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                    <span><strong>Instagram</strong><span>Project visuals</span></span>
+                </a>
+                <a class="social-card" href="https://www.facebook.com/p/Anil-Arote-Consultant-100091550651993/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                    <span><strong>Facebook</strong><span>Company updates</span></span>
+                </a>
+                <a class="social-card" href="https://www.linkedin.com/in/anil-arote-23b0b4171/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                    <span><strong>LinkedIn</strong><span>Professional profile</span></span>
+                </a>
+            </div>
+        </div>
+    </section>
 </script>
 
 <script type="text/template" id="services-template">
@@ -2500,11 +3440,11 @@
                 <div>
                     <span class="eyebrow">Construction Capabilities</span>
                     <h2>Integrated services for planned construction.</h2>
-                    <p>From structural planning to final handover, our services are organized for clients who need disciplined coordination and one accountable construction partner.</p>
+                    <p>Clear planning, practical design, and dependable site execution for construction and interior work.</p>
                 </div>
                 <div class="services-summary" aria-label="Service delivery summary">
-                    <strong>12</strong>
-                    <span>specialized construction, engineering, architecture, and interior service lines under one accountable company.</span>
+                    <strong>Complete Support</strong>
+                    <span>Planning, engineering, construction, interiors, supervision, and finishing.</span>
                 </div>
             </div>
 
@@ -2517,7 +3457,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Civil Construction</h3>
-                            <p>Reliable civil works for foundations, RCC frames, masonry, site development, and durable infrastructure executed with strong quality control.</p>
+                            <p>Foundations, RCC frames, masonry, and civil works with careful site supervision.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Civil Construction">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2531,7 +3471,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Commercial Construction</h3>
-                            <p>Purpose-built commercial spaces planned for business use, customer movement, long-term usability, and a professional market presence.</p>
+                            <p>Commercial spaces planned for usability, customer movement, and durability.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Commercial Construction">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2545,7 +3485,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Residential Construction</h3>
-                            <p>Homes, bungalows, and residential buildings delivered with practical planning, structural safety, detailed finishes, and dependable supervision.</p>
+                            <p>Homes and residential buildings planned for safety, comfort, and lasting value.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Residential Construction">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2559,7 +3499,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Interior Design</h3>
-                            <p>Interior concepts, layouts, material selections, lighting coordination, and execution support for homes, offices, and customer-facing spaces.</p>
+                            <p>Layouts, materials, lighting, and execution for homes and offices.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Interior Design">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2573,7 +3513,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Architecture Planning</h3>
-                            <p>Practical spatial planning, concept design, working drawings, elevation direction, and approval-ready documentation for efficient project starts.</p>
+                            <p>Concept design, working drawings, elevations, and practical space planning.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Architecture Planning">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2587,7 +3527,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Structural Engineering</h3>
-                            <p>RCC design, foundation strategy, structural detailing, load assessment, and engineering coordination focused on strength, safety, and economy.</p>
+                            <p>RCC design, foundation planning, and structural detailing for safe construction.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Structural Engineering">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2601,7 +3541,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Renovation & Remodeling</h3>
-                            <p>Focused upgrades for existing properties, including structural improvements, layout changes, finishes, services coordination, and phased execution.</p>
+                            <p>Layout changes, structural improvements, finishes, and phased renovation work.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Renovation and Remodeling">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2615,7 +3555,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Turnkey Projects</h3>
-                            <p>End-to-end responsibility from concept, drawings, procurement, vendor coordination, site execution, finishing, and final handover.</p>
+                            <p>Concept, drawings, material coordination, site work, finishing, and handover.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Turnkey Projects">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2629,7 +3569,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Project Management</h3>
-                            <p>Structured planning, scheduling, contractor coordination, budget tracking, documentation, and progress control for smoother construction delivery.</p>
+                            <p>Planning, scheduling, contractor coordination, and progress tracking.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Project Management">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2643,7 +3583,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Site Supervision</h3>
-                            <p>On-site monitoring for workmanship, material usage, drawing compliance, safety practices, and day-to-day construction discipline.</p>
+                            <p>Daily site checks for workmanship, materials, drawings, and safety.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Site Supervision">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2657,7 +3597,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Industrial Construction</h3>
-                            <p>Functional industrial facilities, sheds, production spaces, and utility-focused structures planned for durability, workflow, and operational efficiency.</p>
+                            <p>Industrial sheds and functional workspaces planned for durability and daily use.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Industrial Construction">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2671,7 +3611,7 @@
                         </div>
                         <div class="service-body">
                             <h3>Office & Bank Interiors</h3>
-                            <p>Professional office and banking interiors with customer flow, storage, counters, lighting, durability, and brand credibility built into the plan.</p>
+                            <p>Office and banking interiors with practical flow, storage, lighting, and finish quality.</p>
                         </div>
                     </div>
                     <a href="javascript:void(0)" onclick="renderPage('contact')" class="service-link" aria-label="Enquire about Office and Bank Interiors">Enquire <i class="fas fa-arrow-right"></i></a>
@@ -2753,7 +3693,7 @@
                         <li>Attach resume and relevant project/site work samples when available</li>
                     </ul>
                 </div>
-                <a href="mailto:info@anilaroteassociates.com?subject=Career%20Application%20-%20Anil%20Arote%20Associates" class="premium-btn primary">
+                <a href="mailto:anilaroteassociates@gmail.com?subject=Career%20Application%20-%20Anil%20Arote%20Associates" class="premium-btn primary">
                     <span>Send Resume</span>
                     <i class="fas fa-paper-plane"></i>
                 </a>
@@ -2772,18 +3712,14 @@
                     <p>Explore residential, commercial, office, bank interior, and turnkey projects that show the company's practical construction and finishing capabilities.</p>
                 </div>
                 <div class="portfolio-note">
-                    <strong>Live Portfolio</strong>
-                    <span>Projects are loaded directly from Firebase so new admin uploads appear here without changing the website code.</span>
+                    <strong>Built Work</strong>
+                    <span>Our portfolio showcases completed residential, commercial, and interior projects delivered with quality and precision.</span>
                 </div>
             </div>
 
             <div class="project-filters" id="project-filters" aria-label="Project category filters">
-                <button class="project-filter active" type="button" data-filter="all">All Projects</button>
-                <button class="project-filter" type="button" data-filter="construction">Construction</button>
-                <button class="project-filter" type="button" data-filter="interior">Interiors</button>
-                <button class="project-filter" type="button" data-filter="commercial">Commercial</button>
-                <button class="project-filter" type="button" data-filter="residential">Residential</button>
-                <button class="project-filter" type="button" data-filter="bank-office">Bank/Office</button>
+                <button class="project-filter active" type="button" data-filter="construction">Construction Projects</button>
+                <button class="project-filter" type="button" data-filter="interior">Interior Projects</button>
             </div>
 
             <div id="dynamic-projects-grid" class="projects-grid" aria-live="polite">
@@ -2841,8 +3777,8 @@
                     <p>Share your site, project type, or interior requirement. Our team will respond with the right next step for planning, engineering, construction, or turnkey execution.</p>
                 </div>
                 <div class="contact-trust-note">
-                    <strong>Professional Enquiry</strong>
-                    <span>Your message goes through the existing EmailJS enquiry workflow and reaches the business directly.</span>
+                    <strong>Project Consultation</strong>
+                    <span>Contact us for expert guidance on construction, structural planning, interiors, and turnkey project execution.</span>
                 </div>
             </div>
 
@@ -2851,15 +3787,15 @@
                     <h3>Business Information</h3>
                     <p>Reach us directly for construction, architectural planning, structural design, interiors, and turnkey project enquiries.</p>
                     <div class="contact-card-list">
-                        <a class="contact-card" href="tel:08857820207">
+                        <a class="contact-card" href="tel:8857820207">
                             <i class="fas fa-phone" aria-hidden="true"></i>
-                            <span><strong>Call Us</strong><span>08857820207</span></span>
+                            <span><strong>Call Us</strong><span>8857820207</span></span>
                         </a>
-                        <a class="contact-card" href="mailto:info@anilaroteassociates.com">
+                        <a class="contact-card" href="mailto:anilaroteassociates@gmail.com">
                             <i class="fas fa-envelope" aria-hidden="true"></i>
-                            <span><strong>Email Us</strong><span>info@anilaroteassociates.com</span></span>
+                            <span><strong>Email Us</strong><span>anilaroteassociates@gmail.com</span></span>
                         </a>
-                        <a class="contact-card" href="https://wa.me/918857820207?text=Hello%20Anil%20Arote%20Associates%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener">
+                        <a class="contact-card" href="https://wa.me/918857820207?text=Hello%20Anil%20Arote%20Associates%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-whatsapp" aria-hidden="true"></i>
                             <span><strong>WhatsApp Support</strong><span>Chat about your project</span></span>
                         </a>
@@ -2876,6 +3812,23 @@
                         <div>
                             <strong>Service Area</strong>
                             <span>Nanded, Maharashtra and surrounding regions</span>
+                        </div>
+                    </div>
+                    <div class="contact-follow">
+                        <h4>Follow Us</h4>
+                        <div class="contact-social-grid" aria-label="Official social media profiles">
+                            <a class="contact-social-card" href="https://www.instagram.com/anil_arote_associates/" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-instagram" aria-hidden="true"></i>
+                                <span><strong>Instagram</strong><span>View project and interior updates</span></span>
+                            </a>
+                            <a class="contact-social-card" href="https://www.facebook.com/p/Anil-Arote-Consultant-100091550651993/" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                <span><strong>Facebook</strong><span>Follow company news</span></span>
+                            </a>
+                            <a class="contact-social-card" href="https://www.linkedin.com/in/anil-arote-23b0b4171/" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                                <span><strong>LinkedIn</strong><span>Connect professionally</span></span>
+                            </a>
                         </div>
                     </div>
                 </aside>
@@ -2934,7 +3887,67 @@
     const navBackdrop = document.getElementById('nav-backdrop');
     const logoLink = document.querySelector('.logo');
     let projectItems = [];
-    let activeProjectFilter = 'all';
+    let activeProjectFilter = 'construction';
+    const portfolioProjectImages = [
+        "Abhijit_Patil__Kolhapur.jpg",
+        "Anita_Yachwad__Mukrambad.jpg",
+        "Arun_Shete_Sangli.jpg",
+        "Bhaskar-sir_Shirpur_Nizambad.jpg",
+        "Chandu_Potulwar__Nighwa_Bhainsa.jpg",
+        "Digambar_Markante__Vishalnagar_Nanded.jpg",
+        "Gangareddy_Bhupatwar__Shahapur_Nanded.jpg",
+        "image001.jpg",
+        "image002.jpg",
+        "image003.jpg",
+        "image005.jpg",
+        "image006.jpg",
+        "image008.jpg",
+        "image011.jpg",
+        "image012.jpg",
+        "image017.jpg",
+        "image028.jpg",
+        "image029.jpg",
+        "image030.jpg",
+        "Mahesh_Agave__Malkapur_Nanded.jpg",
+        "Malanewddy Chintalwar__Shahapur.jpg",
+        "Mayur_Shahane__Umarga__Dharashiv.jpg",
+        "Sandip_Satpute__Ghawad_Kolhapur.jpg",
+        "Sangita_Ajamani_Sangli.jpg",
+        "Satara.jpg",
+        "Shakil_Shekh__Jaysingpur_Kolhapur.jpg",
+        "Shivaji_Kankante__Shahapur.jpg",
+        "Subhash_Jorgulwar Shahapur.jpg",
+        "Vikas_Pawar__Nanded.jpg",
+        "Vishal_Narute_Ajur(Athni)_Karnatka.jpg"
+    ];
+    const portfolioInteriorImages = [
+        "IMG-20240816-WA0039.jpg",
+        "IMG-20240816-WA0040.jpg",
+        "IMG-20240816-WA0041.jpg",
+        "IMG-20240826-WA0033.jpg",
+        "IMG-20240826-WA0034.jpg",
+        "IMG-20240826-WA0035.jpg",
+        "IMG-20240826-WA0036.jpg",
+        "IMG-20240902-WA0139.jpg",
+        "IMG-20240902-WA0140.jpg",
+        "IMG-20240902-WA0141.jpg",
+        "IMG-20240902-WA0142.jpg",
+        "IMG-20240902-WA0143.jpg",
+        "IMG-20240902-WA0144.jpg",
+        "IMG-20240902-WA0145.jpg",
+        "IMG-20240902-WA0146.jpg",
+        "IMG-20240902-WA0147.jpg",
+        "IMG-20240902-WA0148.jpg",
+        "IMG-20240902-WA0149.jpg",
+        "IMG-20240902-WA0150.jpg",
+        "IMG-20240902-WA0151.jpg",
+        "IMG-20240902-WA0152.jpg",
+        "IMG-20240902-WA0153.jpg",
+        "IMG-20240902-WA0154.jpg",
+        "IMG-20240902-WA0155.jpg",
+        "IMG-20240902-WA0156.jpg",
+        "IMG-20240902-WA0158.jpg"
+    ];
 
     // TEMPLATE MAPPING
     const pageTemplates = {
@@ -2942,7 +3955,6 @@
         expertise: 'career-template', projects: 'projects-template', contact: 'contact-template'
     };
 
-    // 1. FIREBASE CONFIG
     const firebaseConfig = {
         apiKey: "AIzaSyAKKeBpU3ddp0vCk2INATybMhuRu3pMfKQ",
         authDomain: "anilaroteapp.firebaseapp.com",
@@ -2954,9 +3966,7 @@
     if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
-    // 2. EMAILJS INITIALIZATION
     (function() {
-        // *** IMPORTANT: PASTE YOUR PUBLIC KEY HERE ***
         emailjs.init("Eszp0eyAIpksJrC5N");
     })();
 
@@ -2977,7 +3987,7 @@
             if (pageKey === 'projects') {
                 setupProjectFilters();
                 setupProjectModal();
-                loadProjectsFromFirebase();
+                loadProjects();
             }
             if (pageKey === 'contact') {
                 setupContactFormHandler();
@@ -3079,22 +4089,17 @@
     }
 
     // 4. LOAD PROJECTS
-    function loadProjectsFromFirebase() {
+    function loadProjects() {
         const grid = document.getElementById('dynamic-projects-grid');
         if (!grid) return;
 
         renderProjectSkeletons(grid);
         db.collection("projects").orderBy("createdAt", "desc").get()
         .then((querySnapshot) => {
-            if (querySnapshot.empty) {
-                projectItems = [];
-                renderProjects();
-                return;
-            }
-            projectItems = [];
+            const savedProjects = [];
             querySnapshot.forEach((doc) => {
                 const data = doc.data();
-                projectItems.push({
+                savedProjects.push({
                     id: doc.id,
                     title: data.title || 'Untitled Project',
                     location: data.location || 'Location available on request',
@@ -3103,20 +4108,78 @@
                     filters: getProjectFilterKeys(data)
                 });
             });
+            projectItems = [...savedProjects, ...getPortfolioItems()];
             renderProjects();
         })
         .catch((error) => {
             console.error("Error loading projects:", error);
-            renderProjectStatus('Failed to load projects. Please try again later.', true);
+            projectItems = getPortfolioItems();
+            renderProjects();
         });
     }
 
+    function getPortfolioItems() {
+        const constructionItems = portfolioProjectImages.map((fileName, index) => {
+            const details = getProjectDetailsFromFileName(fileName);
+            const item = {
+                id: `project-${index}`,
+                title: details.title,
+                location: details.location,
+                category: details.category,
+                imageUrl: `Projects/${fileName}`,
+                filters: ['construction', details.filter]
+            };
+            item.filters = Array.from(new Set(item.filters.filter(Boolean)));
+            return item;
+        });
+
+        const interiorItems = portfolioInteriorImages.map((fileName, index) => ({
+            id: `interior-${index}`,
+            title: `Interior Work ${String(index + 1).padStart(2, '0')}`,
+            location: 'Interior showcase',
+            category: 'Interior',
+            imageUrl: `interior/${fileName}`,
+            filters: ['interior']
+        }));
+
+        return [...constructionItems, ...interiorItems];
+    }
+
+    function getProjectDetailsFromFileName(fileName) {
+        const baseName = fileName.replace(/\.[^.]+$/, '');
+        if (/^image\d+$/i.test(baseName)) {
+            return {
+                title: `Construction Project ${baseName.replace('image', '')}`,
+                location: 'Completed project',
+                category: 'Construction',
+                filter: 'construction'
+            };
+        }
+
+        const normalized = baseName.replace(/__/g, ' - ').replace(/_/g, ' ').replace(/\s+/g, ' ').trim();
+        const parts = normalized.split(' - ');
+        const title = parts[0] ? `${parts[0]} Project` : 'Construction Project';
+        const location = parts[1] || inferLocationFromName(normalized) || 'Completed project';
+        const filter = /shop|office|bank|commercial|complex/i.test(normalized) ? 'commercial' : 'residential';
+        return {
+            title,
+            location,
+            category: filter === 'commercial' ? 'Commercial' : 'Residential',
+            filter
+        };
+    }
+
+    function inferLocationFromName(name) {
+        const knownLocations = ['Nanded', 'Kolhapur', 'Sangli', 'Satara', 'Shahapur', 'Karnatka', 'Dharashiv', 'Nizambad', 'Mukrambad'];
+        return knownLocations.find(location => name.toLowerCase().includes(location.toLowerCase())) || '';
+    }
+
     function setupProjectFilters() {
-        activeProjectFilter = 'all';
+        activeProjectFilter = 'construction';
         const filters = document.querySelectorAll('.project-filter');
         filters.forEach(button => {
             button.addEventListener('click', () => {
-                activeProjectFilter = button.getAttribute('data-filter') || 'all';
+                activeProjectFilter = button.getAttribute('data-filter') || 'construction';
                 filters.forEach(item => item.classList.toggle('active', item === button));
                 renderProjects();
             });
@@ -3146,9 +4209,9 @@
         if (!grid) return;
 
         grid.replaceChildren();
-        const visibleProjects = activeProjectFilter === 'all'
-            ? projectItems
-            : projectItems.filter(project => project.filters.includes(activeProjectFilter));
+        const visibleProjects = projectItems
+            .filter(project => project.filters.includes(activeProjectFilter))
+            .slice(0, 12);
 
         if (!visibleProjects.length) {
             renderProjectStatus(projectItems.length ? 'No projects match this category yet.' : 'No projects added yet.', false);
@@ -3261,7 +4324,11 @@
             if (parsed.protocol === 'http:' || parsed.protocol === 'https:') {
                 return parsed.href;
             }
+            if (parsed.origin === window.location.origin) {
+                return parsed.pathname.replace(/^\//, '') + parsed.search + parsed.hash;
+            }
         } catch (error) {
+            if (/^(Projects|interior|bank interior)\//i.test(url.trim())) return url.trim();
             console.warn('Invalid project image URL:', error);
         }
         return 'Logo_bg.png';
@@ -3332,7 +4399,6 @@
                     submitButton.innerHTML = '<span>Sending...</span><i class="fas fa-circle-notch fa-spin"></i>';
                 }
 
-                // YOUR EMAILJS CREDENTIALS
                 const serviceID = 'service_ahfbhwi';
                 const templateID = 'template_muq85ge';
 
@@ -3344,7 +4410,7 @@
                     }, (err) => {
                         status.textContent = 'Failed to send. Please try again.';
                         status.className = 'contact-status error';
-                        console.error('EmailJS Error:', err);
+                        console.error('Contact form error:', err);
                     })
                     .finally(() => {
                         if (submitButton) {
